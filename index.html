@@ -519,12 +519,124 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 }
 .card-accent-purple h3 { color: var(--purple-d); }
 
-/* ── Screenshot placeholders ── */
+/* ── Screenshot thumbnails + lightbox ── */
 .ss-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+
+.ss-card {
+  background: #fff;
+  border: 0.5px solid var(--slate-200);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+.ss-card:hover {
+  border-color: var(--purple);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.12);
+  transform: translateY(-1px);
+}
+.ss-card:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+.ss-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  background: var(--slate-50);
+}
+.ss-caption {
+  padding: 10px 14px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--slate-600);
+  border-top: 0.5px solid var(--slate-100);
+}
+
+/* Legacy placeholder (kept so any un-replaced items still render sensibly) */
 .ss-ph {
   background: var(--slate-50); border: 1.5px dashed var(--slate-300);
   border-radius: 12px; padding: 48px 24px;
   text-align: center; font-size: 12px; color: var(--slate-400); font-style: italic;
+}
+
+/* Modal / lightbox */
+.ss-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 26, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.ss-modal[data-open="true"] {
+  display: flex;
+  opacity: 1;
+}
+.ss-modal-inner {
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.ss-modal-inner img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  background: #fff;
+}
+.ss-modal-caption {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 680px;
+}
+.ss-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.15s, background 0.15s;
+}
+.ss-modal-close:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.16);
+}
+@media (max-width: 600px) {
+  .ss-modal { padding: 20px 12px; }
+  .ss-modal-close { top: 12px; right: 12px; width: 36px; height: 36px; }
 }
 
 /* ── Footer ── */
@@ -900,16 +1012,16 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   <ul class="sb-list">
     <li><a href="#sec-overview" data-target="sec-overview" class="sb-link no-letter"><span class="sb-letter"></span>Overview</a></li>
     <li>
-      <a href="#sec-h" data-target="sec-h" class="sb-link purple-variant">Signal</a>
+      <a href="#sec-h" data-target="sec-h" class="sb-link purple-variant"><span class="sb-letter">H</span>Signal</a>
       <ul class="sb-sub">
         <li><a href="#sec-h-layers" data-target="sec-h-layers" class="sb-link purple-variant">Three knowledge layers</a></li>
         <li><a href="#sec-h-practice" data-target="sec-h-practice" class="sb-link purple-variant">Signal in practice</a></li>
         <li><a href="#sec-h-scoring" data-target="sec-h-scoring" class="sb-link purple-variant">Signal &amp; adaptive scoring</a></li>
       </ul>
     </li>
-    <li><a href="#sec-a" data-target="sec-a" class="sb-link">Onboarding</a></li>
+    <li><a href="#sec-a" data-target="sec-a" class="sb-link"><span class="sb-letter">A</span>Onboarding</a></li>
     <li>
-      <a href="#sec-b" data-target="sec-b" class="sb-link">Governance</a>
+      <a href="#sec-b" data-target="sec-b" class="sb-link"><span class="sb-letter">B</span>Governance</a>
       <ul class="sb-sub">
         <li><a href="#sec-b-tools" data-target="sec-b-tools" class="sb-link">The dual-tool pattern</a></li>
         <li><a href="#sec-b-memory" data-target="sec-b-memory" class="sb-link">Architecture memory</a></li>
@@ -918,12 +1030,12 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         <li><a href="#sec-b-review" data-target="sec-b-review" class="sb-link">Checkpoint &amp; review</a></li>
       </ul>
     </li>
-    <li><a href="#sec-bprime" data-target="sec-bprime" class="sb-link">Closed loop</a></li>
-    <li><a href="#sec-c" data-target="sec-c" class="sb-link">Knowledge base</a></li>
-    <li><a href="#sec-d" data-target="sec-d" class="sb-link">Action Layer</a></li>
-    <li><a href="#sec-e" data-target="sec-e" class="sb-link">Adaptive scoring</a></li>
-    <li><a href="#sec-f" data-target="sec-f" class="sb-link">Extensibility</a></li>
-    <li><a href="#sec-strategic" data-target="sec-strategic" class="sb-link no-letter">Strategic value</a></li>
+    <li><a href="#sec-bprime" data-target="sec-bprime" class="sb-link"><span class="sb-letter">B&prime;</span>Closed loop</a></li>
+    <li><a href="#sec-c" data-target="sec-c" class="sb-link"><span class="sb-letter">C</span>Knowledge base</a></li>
+    <li><a href="#sec-d" data-target="sec-d" class="sb-link"><span class="sb-letter">D</span>Action Layer</a></li>
+    <li><a href="#sec-e" data-target="sec-e" class="sb-link"><span class="sb-letter">E</span>Adaptive scoring</a></li>
+    <li><a href="#sec-f" data-target="sec-f" class="sb-link"><span class="sb-letter">F</span>Extensibility</a></li>
+    <li><a href="#sec-strategic" data-target="sec-strategic" class="sb-link no-letter"><span class="sb-letter"></span>Strategic value</a></li>
   </ul>
 </aside>
 
@@ -1882,7 +1994,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         })();
       </script>
 
-      <div class="section-label purple" id="sec-h-layers" style="margin-top:32px;">Three knowledge layers</div>
+      <div class="section-label purple" id="sec-h-layers" style="margin-top:32px;">H1 &nbsp;&middot;&nbsp; Three knowledge layers</div>
       <div class="three-col">
         <div class="knowledge-layer">
           <h3 class="teal">Layer 1 &mdash; How Flockr works</h3>
@@ -1898,7 +2010,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
 
-      <div class="section-label purple" id="sec-h-practice" style="margin-top:36px;">Signal in practice</div>
+      <div class="section-label purple" id="sec-h-practice" style="margin-top:36px;">H2 &nbsp;&middot;&nbsp; Signal in practice</div>
       <div class="two-col">
         <div>
           <h3 class="purple">Understanding a metric</h3>
@@ -1936,7 +2048,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
 
-      <div class="section-label purple" id="sec-h-scoring" style="margin-top:36px;">Signal and the adaptive scoring model</div>
+      <div class="section-label purple" id="sec-h-scoring" style="margin-top:36px;">H3 &nbsp;&middot;&nbsp; Signal and the adaptive scoring model</div>
       <div class="two-col">
         <div>
           <h3 class="purple">Understanding scoring changes</h3>
@@ -1955,12 +2067,24 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
       </div>
 
 
-      <div class="section-label purple" style="margin-top:36px;">Screenshots &mdash; to be added</div>
+      <div class="section-label purple" style="margin-top:36px;">H5 &nbsp;&middot;&nbsp; Example conversations</div>
       <div class="ss-grid">
-        <div class="ss-ph">[Screenshot: Home page &mdash; Signal card with contextual suggested prompts]</div>
-        <div class="ss-ph">[Screenshot: Signal panel &mdash; example conversation with source badges]</div>
-        <div class="ss-ph">[Screenshot: Action Layer &mdash; Signal explaining a classification decision]</div>
-        <div class="ss-ph">[Screenshot: Adaptive model &mdash; Signal answering a scoring model question]</div>
+        <button type="button" class="ss-card" data-img="Signal4.png" data-caption="Reviewing message performance &mdash; Signal cross-references live CTR, render rate and visibility across signal families, and flags where copy or placement is likely the cause of underperformance.">
+          <img src="Signal4.png" alt="Signal reviewing message performance across signal families" loading="lazy">
+          <div class="ss-caption">Reviewing message performance across signal families</div>
+        </button>
+        <button type="button" class="ss-card" data-img="Signal3.png" data-caption="Operational health check &mdash; Signal confirms which surfaces are active, which are disabled by configuration, and gives the operator a concrete diagnostic path when a page appears to be missing messages.">
+          <img src="Signal3.png" alt="Signal confirming which surfaces are firing and which are disabled" loading="lazy">
+          <div class="ss-caption">Operational check &mdash; which surfaces are firing</div>
+        </button>
+        <button type="button" class="ss-card" data-img="Signal2.png" data-caption="A reorder brief written by Signal &mdash; scarcity-risk products grouped by priority, with runway, risk score, active carts, 7-day purchases and demand trend per product. Designed to be sent straight to a buying team.">
+          <img src="Signal2.png" alt="Signal writing a reorder brief prioritised by scarcity risk" loading="lazy">
+          <div class="ss-caption">A reorder brief, prioritised by scarcity risk</div>
+        </button>
+        <button type="button" class="ss-card" data-img="Signal1.png" data-caption="Live trending &mdash; Signal surfaces the products with the strongest demand acceleration right now, comparing 3-hour intraday momentum against the 7-day baseline to separate breakouts from steady performers.">
+          <img src="Signal1.png" alt="Signal surfacing live trending products with momentum data" loading="lazy">
+          <div class="ss-caption">Live trending &mdash; strongest momentum right now</div>
+        </button>
       </div>
     </div>
 
@@ -2567,7 +2691,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 <!-- ── ACTION LAYER ── -->
 <div class="doc-section" id="sec-d">
   <div class="doc-section-inner">
-    <h2 class="section-title"><span class="lt">Action Layer</span> &mdash; demand intelligence to commercial decision</h2>
+    <h2 class="section-title">Action Layer &mdash; demand intelligence to commercial decision</h2>
     <p class="intro">The Action Layer surfaces a single recommended action per product across four areas of the Demand page: Scarcity risk table, Fading tab, Momentum leaderboard, and the Live demand event feed (HIGH and CRITICAL events only).</p>
     <div class="two-col">
       <div>
@@ -2604,7 +2728,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 <!-- ── ADAPTIVE SCORING ── -->
 <div class="doc-section" id="sec-e">
   <div class="doc-section-inner">
-    <h2 class="section-title"><span class="lt">Adaptive scoring</span> &mdash; self-optimising signal selection</h2>
+    <h2 class="section-title">Adaptive scoring &mdash; self-optimising signal selection</h2>
     <p class="intro">The scoring model learns continuously from each client&rsquo;s own conversion data. Five dimensions are optimised simultaneously without manual configuration.</p>
     <div class="two-col">
       <ul class="blist">
@@ -2624,7 +2748,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 <!-- ── F: EXTENSIBILITY ── -->
 <div class="doc-section" id="sec-f">
   <div class="doc-section-inner">
-    <h2 class="section-title"><span class="lt">Extensibility</span> &mdash; the pattern beyond e-commerce</h2>
+    <h2 class="section-title">Extensibility &mdash; the pattern beyond e-commerce</h2>
     <p class="intro">The architecture is not catalogue-specific. The core pattern applies wherever there are items to surface and decisions to influence.</p>
     <div class="two-col">
       <div>
@@ -2654,7 +2778,8 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 <!-- ── STRATEGIC VALUE ── -->
 <div class="doc-section" id="sec-strategic">
   <div class="doc-section-inner">
-    <h2 class="section-title"><span class="lt">Strategic value</span> &mdash; Why this system matters</h2>
+    <div class="section-label teal">Strategic value</div>
+    <h2 class="section-title">Why this system matters</h2>
     <p class="intro">This operating model directly impacts scalability, defensibility, and product differentiation.</p>
     <div class="three-col">
       <div class="card card-accent-teal">
@@ -2780,6 +2905,62 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   } else {
     initNav();
   }
+})();
+</script>
+
+<!-- ── Screenshot lightbox modal ── -->
+<div class="ss-modal" id="ss-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <button class="ss-modal-close" type="button" aria-label="Close screenshot">&times;</button>
+  <div class="ss-modal-inner">
+    <img id="ss-modal-img" alt="">
+    <div class="ss-modal-caption" id="ss-modal-caption"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var modal = document.getElementById('ss-modal');
+  if (!modal) return;
+  var modalImg = document.getElementById('ss-modal-img');
+  var modalCaption = document.getElementById('ss-modal-caption');
+  var closeBtn = modal.querySelector('.ss-modal-close');
+  var lastFocus = null;
+
+  function openModal(src, caption) {
+    lastFocus = document.activeElement;
+    modalImg.src = src;
+    modalImg.alt = caption;
+    modalCaption.innerHTML = caption;
+    modal.setAttribute('data-open', 'true');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Focus the close button so keyboard users can dismiss immediately
+    setTimeout(function() { closeBtn.focus(); }, 50);
+  }
+
+  function closeModal() {
+    modal.setAttribute('data-open', 'false');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // Clear src after transition so the image doesn't flash on reopen
+    setTimeout(function() { modalImg.src = ''; modalImg.alt = ''; }, 250);
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  document.querySelectorAll('.ss-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      openModal(card.getAttribute('data-img'), card.getAttribute('data-caption'));
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    // Click on backdrop (not inner content) closes
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.getAttribute('data-open') === 'true') closeModal();
+  });
 })();
 </script>
 
