@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flockr — How We Use AI: The Complete Operating Model</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -39,7 +40,8 @@ body {
   font-size: 15px;
   line-height: 1.75;
   color: var(--slate-700);
-  background: #fff;
+  /*background: #fff;*/
+  background: #f5f7fb;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 0 80px;
@@ -197,7 +199,32 @@ body {
 
 /* ── Sections ── */
 .doc-section { padding: 52px 0 0; }
-.doc-section + .doc-section { border-top: 1px solid var(--slate-200); margin-top: 52px; }
+/*.doc-section + .doc-section { border-top: 1px solid var(--slate-200); margin-top: 52px; }*/
+
+.doc-section-inner {
+  display: block;
+  padding: 40px 48px 40px;
+
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+  transition: all 0.2s ease;
+}
+
+.knowledge-layer {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.knowledge-layer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
 
 /* ── Section label ── */
 .section-label {
@@ -254,27 +281,60 @@ ul.blist.purple li::before { color: var(--purple); }
 ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 
 /* ── Tables ── */
-.dtable { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 14px; }
+.dtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 14px;
+}
 .dtable thead th {
-  background: var(--slate-100); color: var(--slate-500); font-weight: 700;
-  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em;
-  padding: 11px 16px; text-align: left; border-bottom: 1px solid var(--slate-200);
+  color: var(--slate-500);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 10px 16px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--slate-200);
+  background: transparent;
 }
 .dtable tbody td {
-  padding: 11px 16px; color: var(--slate-600);
-  border-bottom: 1px solid var(--slate-200); line-height: 1.55; vertical-align: top;
+  padding: 14px 16px;
+  /*color: var(--slate-600);*/
+  border-bottom: 1px solid var(--slate-100);
+  line-height: 1.55;
+  vertical-align: middle;
+  /*background: transparent;*/
 }
 .dtable tbody tr:last-child td { border-bottom: none; }
-.dtable tbody tr:nth-child(odd) td { background: var(--slate-50); }
+.dtable tbody tr:nth-child(odd) td { background: transparent; }
+/*.dtable tbody tr:hover td { background: var(--slate-50); }*/
 .dtable th:first-child,
 .dtable td:first-child {
   white-space: nowrap;
 }
-.dtable td strong { color: var(--slate-900); font-weight: 600; }
-.uc { color: #DC2626; font-weight: 700; }
-.uh { color: #D97706; font-weight: 700; }
-.um { color: var(--purple); font-weight: 700; }
-.ul { color: var(--slate-500); font-weight: 600; }
+.dtable td strong {
+  color: var(--slate-900);
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+/* Urgency pills — replace the flat coloured text */
+.uc, .uh, .um, .ul {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.uc { background: #FEE2E2; color: #991B1B; }
+.uh { background: #FEF3C7; color: #92400E; }
+.um { background: #EDE9FE; color: #5B21B6; }
+.ul { background: #F1F5F9; color: #475569; }
 
 /* ── At a glance ── */
 .glance { margin-top: 20px; border: 1px solid var(--slate-200); border-radius: 12px; overflow: hidden; }
@@ -295,13 +355,23 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 }
 .callout.teal {
   background: var(--teal-ll);
-  border-color: rgba(29,158,117,0.3);
+  /*border-color: rgba(29,158,117,0.3);*/
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+  transition: all 0.2s ease;
 }
 .callout.teal::before {
   content: '';
   position: absolute; top: 0; left: 0;
   width: 4px; height: 100%;
   background: var(--teal);
+}
+/* subtle lift */
+.callout.teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
 }
 .callout.purple {
   background: var(--purple-ll);
@@ -326,7 +396,14 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   position: relative;
   overflow: hidden;
   border: 1px solid var(--dark-border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.dark-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
 }
+
 .dark-panel::before {
   content: '';
   position: absolute;
@@ -354,11 +431,17 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 
 /* ── Infographic host ── */
 .infographic-host {
-  display: block; margin: 24px 0;
-  border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--slate-200);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  display: block;
+  width: 100%;
+  /*margin: 24px 0;*/
+  /*border-radius: 16px;*/
+  /*border: 1px solid var(--slate-200);*/
+  /*box-shadow: 0 4px 24px rgba(0,0,0,0.06);*/
+  overflow: visible;
+  min-height: 200px;
 }
+
+
 
 /* ── Conflicts ── */
 .conflicts {
@@ -380,8 +463,14 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   border-radius: 12px;
   overflow: hidden;
   margin-top: 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.conv:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
 }
+
 .conv-q {
   padding: 13px 18px; font-size: 13px; line-height: 1.6;
   background: var(--slate-50);
@@ -408,10 +497,15 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   border-radius: 14px;
   padding: 26px 24px;
   padding:24px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  transition: box-shadow 0.2s;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
 }
-.card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+
+
 .card h3 { margin-top: 0; margin-bottom: 8px; }
 .card p { margin: 0; }
 .card-accent-teal {
@@ -440,6 +534,309 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   display: flex; justify-content: space-between;
   font-size: 12px; color: var(--slate-400);
 }
+
+
+
+
+/* ── Sticky section nav ── */
+.doc-nav {
+  position: sticky;
+  top: 48px; /* sits under the doc-header */
+  z-index: 99;
+  background: #fff;
+  border-bottom: 1px solid var(--slate-200);
+  padding: 10px 0;
+}
+.doc-nav-inner {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  overflow-x: auto;
+  padding: 0 64px;
+  scrollbar-width: none;
+}
+.doc-nav-inner::-webkit-scrollbar { display: none; }
+.doc-nav a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--slate-600);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.doc-nav a:hover {
+  background: var(--slate-100);
+  color: var(--slate-900);
+}
+.doc-nav a.active {
+  background: var(--teal-ll);
+  color: var(--teal-d);
+}
+.doc-nav a.active.purple {
+  background: var(--purple-ll);
+  color: var(--purple-d);
+}
+.doc-nav a .nav-letter {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+}
+.doc-nav a.purple-letter .nav-letter { color: var(--purple); }
+.doc-nav a.active .nav-letter { color: var(--teal-d); }
+.doc-nav a.active.purple .nav-letter { color: var(--purple-d); }
+
+/* Each anchored section needs space so header + nav don't overlap when jumping */
+.doc-section[id] {
+  scroll-margin-top: 110px;
+}
+
+/* Sub-section anchors (inside B and H) — same header offset */
+#sec-b-tools, #sec-b-memory, #sec-b-authority, #sec-b-compliance, #sec-b-review,
+#sec-h-layers, #sec-h-practice, #sec-h-scoring {
+  scroll-margin-top: 110px;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   Left sidebar navigation (desktop only, ≥1100px)
+   Replaces the sticky horizontal .doc-nav on wide viewports.
+   ────────────────────────────────────────────────────────────────────── */
+.doc-sidebar { display: none; }
+.body-layout { display: block; }
+
+@media (min-width: 1100px) {
+  /* Hide the horizontal nav at desktop widths */
+  .doc-nav { display: none; }
+
+  /* Two-column layout: sidebar + content */
+  .body-layout {
+    display: grid;
+    grid-template-columns: 232px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .doc-sidebar {
+    display: block;
+    position: sticky;
+    top: 48px; /* sits under doc-header */
+    align-self: start;
+    height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 28px 0 40px 0;
+    border-right: 0.5px solid var(--slate-200);
+    background: transparent;
+  }
+
+  .doc-sidebar::-webkit-scrollbar { width: 6px; }
+  .doc-sidebar::-webkit-scrollbar-track { background: transparent; }
+  .doc-sidebar::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 3px; }
+  .doc-sidebar { scrollbar-width: thin; scrollbar-color: var(--slate-200) transparent; }
+
+  .sb-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-400);
+    padding: 0 14px;
+    margin: 4px 0 10px;
+  }
+  .sb-list { list-style: none; margin: 0; padding: 0; }
+
+  .sb-link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 14px 7px 12px;
+    border-left: 2px solid transparent;
+    font-size: 13px;
+    color: var(--slate-600);
+    text-decoration: none;
+    line-height: 1.45;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+  }
+  .sb-link:hover {
+    color: var(--slate-900);
+    background: var(--slate-50);
+  }
+  .sb-link.active {
+    color: var(--teal-d);
+    border-left-color: var(--teal);
+    font-weight: 600;
+    background: rgba(29, 158, 117, 0.04);
+  }
+  .sb-link.active.purple-variant {
+    color: var(--purple-d);
+    border-left-color: var(--purple);
+    background: rgba(124, 58, 237, 0.04);
+  }
+
+  .sb-letter {
+    display: inline-block;
+    min-width: 18px;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .sb-link.purple-variant .sb-letter { color: var(--purple); }
+  /* .no-letter keeps the same min-width so text aligns with lettered items */
+
+  /* Sub-items (nested under Signal and Governance) */
+  .sb-sub { list-style: none; margin: 2px 0 4px; padding: 0; }
+  .sb-sub .sb-link {
+    padding-left: 40px;
+    font-size: 12.5px;
+    color: var(--slate-500);
+    font-weight: 400;
+  }
+  .sb-sub .sb-link:hover { color: var(--slate-800); }
+  .sb-sub .sb-link.active {
+    color: var(--teal-d);
+    border-left-color: var(--teal);
+    font-weight: 500;
+  }
+  .sb-sub .sb-link.active.purple-variant {
+    color: var(--purple-d);
+    border-left-color: var(--purple);
+    font-weight: 500;
+  }
+
+  /* Narrow the content padding a touch since sidebar already creates breathing room */
+  .doc-section { padding-left: 0; padding-right: 0 }
+
+  /* Sub-anchor scroll-margin needs more room on desktop (no horizontal nav) */
+  #sec-b-tools, #sec-b-memory, #sec-b-authority, #sec-b-compliance, #sec-b-review,
+  #sec-h-layers, #sec-h-practice, #sec-h-scoring {
+    scroll-margin-top: 72px;
+  }
+  .doc-section[id] { scroll-margin-top: 72px; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .doc-nav { padding: 8px 0; }
+  .doc-nav-inner { padding: 8px 20px; gap: 2px; }
+  .doc-nav a { padding: 8px 12px; font-size: 12px; }
+  .doc-section[id] { scroll-margin-top: 100px; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   Responsive breakpoints
+   ────────────────────────────────────────────────────────────────────── */
+
+/* Tablet landscape and below (≤1200px) ─ slight compression */
+@media (max-width: 1200px) {
+  .doc-header { padding: 14px 48px; }
+  .cover { padding: 64px 48px 56px; }
+  .cover-title { font-size: 48px; }
+  .doc-footer { margin: 0 48px; }
+  .two-col { gap: 36px; }
+  .three-col { gap: 24px; }
+}
+
+/* Tablet portrait (≤1024px) ─ collapse three-col and glance */
+@media (max-width: 1024px) {
+  .doc-header { padding: 12px 32px; }
+  .doc-header-meta { font-size: 11px; }
+  .cover { padding: 56px 32px 48px; }
+  .cover-title { font-size: 42px; }
+  .cover-subtitle { font-size: 18px; }
+  .cover-cards { grid-template-columns: 1fr; gap: 12px; }
+  .doc-footer { margin: 0 32px; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .doc-section { padding: 40px 32px 0; }
+  .doc-section + .doc-section { margin-top: 40px; }
+  .doc-section-inner { padding: 28px 28px; }
+  .three-col { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .two-col { gap: 28px; }
+  .section-title { font-size: 24px; }
+  .glance-row { grid-template-columns: 120px 1fr; }
+  .dark-panel { padding: 26px 28px; }
+  .ss-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile (≤720px) ─ single-column throughout */
+@media (max-width: 720px) {
+  body { font-size: 14px; line-height: 1.7; }
+  .doc-header { padding: 10px 20px; flex-wrap: wrap; gap: 6px; }
+  .doc-header-meta { font-size: 10px; width: 100%; }
+  .cover { padding: 40px 20px 36px; }
+  .cover-title { font-size: 32px; line-height: 1.1; }
+  .cover-subtitle { font-size: 16px; }
+  .cover-meta { margin-bottom: 28px; }
+  .cover-card { padding: 16px 18px; }
+  .cover-eyebrow { font-size: 10px; margin-bottom: 20px; }
+  .doc-footer { margin: 0 20px; font-size: 11px; }
+  .doc-section { padding: 32px 20px 0; }
+  .doc-section + .doc-section { margin-top: 32px; padding-top: 32px; }
+  .doc-section-inner { padding: 18px; border-radius: 12px; }
+  .section-title { font-size: 20px; }
+  .section-label { font-size: 10px; margin-bottom: 16px; }
+  .two-col, .three-col { grid-template-columns: 1fr; gap: 24px; }
+  .glance-row { grid-template-columns: 1fr; }
+  .glance-left { padding: 12px 16px 0; background: transparent; }
+  .glance-right { padding: 8px 16px 16px; }
+  .dark-panel { padding: 22px 20px; border-radius: 12px; }
+  .dark-panel h2 { font-size: 20px; }
+  .dp-meta { gap: 12px; }
+  .dp-meta span { font-size: 11px; }
+  .ss-grid { grid-template-columns: 1fr; }
+  .ss-ph { padding: 36px 20px; }
+  .callout { padding: 14px 18px; }
+  .card { padding: 20px; }
+  /* tables → horizontal scroll on narrow screens */
+  .dtable { display: block; overflow-x: auto; white-space: nowrap; }
+  .dtable td, .dtable th { white-space: normal; }
+  /* .dtable-stack variant: stack each row instead of scrolling, for tables where the first col is a label and the second is a paragraph */
+  .dtable.dtable-stack,
+  .dtable.dtable-stack thead,
+  .dtable.dtable-stack tbody,
+  .dtable.dtable-stack tr,
+  .dtable.dtable-stack th,
+  .dtable.dtable-stack td {
+    display: block;
+    width: 100%;
+    overflow-x: visible;
+    white-space: normal;
+  }
+  .dtable.dtable-stack thead { display: none; }
+  .dtable.dtable-stack tbody tr {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .dtable.dtable-stack tbody tr:last-child { border-bottom: none; }
+  .dtable.dtable-stack tbody td {
+    padding: 0;
+    border-bottom: none;
+  }
+  .dtable.dtable-stack tbody td:first-child {
+    color: var(--slate-900);
+    margin-bottom: 6px;
+    white-space: normal;
+  }
+  .dtable.dtable-stack tbody td:first-child strong {
+    font-size: 14px;
+  }
+  .dtable.dtable-stack tbody td:last-child {
+    font-size: 13.5px;
+    color: var(--slate-600);
+    line-height: 1.6;
+  }
+  .dtable.dtable-stack tbody tr:nth-child(odd) td { background: transparent; }
+  /* conv boxes full width */
+  .conv-q, .conv-a { padding: 12px 14px; font-size: 12.5px; }
+  /* infographic host — scale shadow content */
+  .infographic-host { margin: 20px 0; border-radius: 10px; }
+}
+
+
+
 </style>
 </head>
 <body>
@@ -469,38 +866,96 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
     <div class="cover-cards">
       <div class="cover-card teal">
         <strong>Note for Core Media</strong>
-        <p>The development and governance model in sections A&ndash;C is not specific to Flockr&rsquo;s domain. It is a transferable approach to building software with AI without losing quality control or codebase coherence. The closed-loop system in section B&prime; represents an advanced pattern for governed AI development that any engineering team could adopt.</p>
+        <p>The development and governance models are not specific to Flockr&rsquo;s domain. It is a transferable approach to building software with AI without losing quality control or codebase coherence. The closed-loop system represents an advanced pattern for governed AI development that any engineering team could adopt.</p>
       </div>
       <div class="cover-card purple">
-        <strong>Signal &mdash; see Section H</strong>
-        <p>Signal is the stand-out capability. It knows how Flockr works, your specific configuration, and queries your live analytics directly &mdash; turning the portal from a reporting tool into a conversational intelligence layer. Covered in full in Section H.</p>
+        <strong>Signal</strong>
+        <p>Signal is the stand-out capability. It knows how Flockr works, your specific configuration, and queries your live analytics directly &mdash; turning the portal from a reporting tool into a conversational intelligence layer.</p>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ── Sticky section nav (mobile/tablet only — hidden on desktop) ── -->
+<nav class="doc-nav" id="doc-nav">
+  <div class="doc-nav-inner">
+    <a href="#sec-overview" data-target="sec-overview"><span class="nav-letter">Overview</span></a>
+    <a href="#sec-h" data-target="sec-h" class="purple-letter">Signal</a>
+    <a href="#sec-a" data-target="sec-a">Onboarding</a>
+    <a href="#sec-b" data-target="sec-b">Governance</a>
+    <a href="#sec-bprime" data-target="sec-bprime">Closed loop</a>
+    <a href="#sec-c" data-target="sec-c">Knowledge base</a>
+    <a href="#sec-d" data-target="sec-d">Action Layer</a>
+    <a href="#sec-e" data-target="sec-e">Adaptive scoring</a>
+    <a href="#sec-f" data-target="sec-f">Extensibility</a>
+    <a href="#sec-strategic" data-target="sec-strategic"><span class="nav-letter">Strategic value</span></a>
+  </div>
+</nav>
+
+<div class="body-layout">
+
+<!-- ── Left sidebar nav (desktop only, ≥1100px) ── -->
+<aside class="doc-sidebar" id="doc-sidebar">
+  <div class="sb-title">Contents</div>
+  <ul class="sb-list">
+    <li><a href="#sec-overview" data-target="sec-overview" class="sb-link no-letter"><span class="sb-letter"></span>Overview</a></li>
+    <li>
+      <a href="#sec-h" data-target="sec-h" class="sb-link purple-variant">Signal</a>
+      <ul class="sb-sub">
+        <li><a href="#sec-h-layers" data-target="sec-h-layers" class="sb-link purple-variant">Three knowledge layers</a></li>
+        <li><a href="#sec-h-practice" data-target="sec-h-practice" class="sb-link purple-variant">Signal in practice</a></li>
+        <li><a href="#sec-h-scoring" data-target="sec-h-scoring" class="sb-link purple-variant">Signal &amp; adaptive scoring</a></li>
+      </ul>
+    </li>
+    <li><a href="#sec-a" data-target="sec-a" class="sb-link">Onboarding</a></li>
+    <li>
+      <a href="#sec-b" data-target="sec-b" class="sb-link">Governance</a>
+      <ul class="sb-sub">
+        <li><a href="#sec-b-tools" data-target="sec-b-tools" class="sb-link">The dual-tool pattern</a></li>
+        <li><a href="#sec-b-memory" data-target="sec-b-memory" class="sb-link">Architecture memory</a></li>
+        <li><a href="#sec-b-authority" data-target="sec-b-authority" class="sb-link">Tiered source authority</a></li>
+        <li><a href="#sec-b-compliance" data-target="sec-b-compliance" class="sb-link">Compliance checks</a></li>
+        <li><a href="#sec-b-review" data-target="sec-b-review" class="sb-link">Checkpoint &amp; review</a></li>
+      </ul>
+    </li>
+    <li><a href="#sec-bprime" data-target="sec-bprime" class="sb-link">Closed loop</a></li>
+    <li><a href="#sec-c" data-target="sec-c" class="sb-link">Knowledge base</a></li>
+    <li><a href="#sec-d" data-target="sec-d" class="sb-link">Action Layer</a></li>
+    <li><a href="#sec-e" data-target="sec-e" class="sb-link">Adaptive scoring</a></li>
+    <li><a href="#sec-f" data-target="sec-f" class="sb-link">Extensibility</a></li>
+    <li><a href="#sec-strategic" data-target="sec-strategic" class="sb-link no-letter">Strategic value</a></li>
+  </ul>
+</aside>
+
 <div class="content">
 
 <!-- ── OVERVIEW ── -->
-<div class="doc-section">
-  <div class="section-label teal">Overview</div>
-  
+<div class="doc-section" id="sec-overview">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Overview</span> &middot; How Flockr uses <span>AI</span> &mdash; In every business layer</h2>
+    <p class="intro">Claude operates across every layer of the business, from the first line of integration code to the conversation an operator has with their live data..</p>
 
-  <div id="infographic-1" class="infographic-host"></div>
-<script>
-(function() {
-  var host = document.getElementById('infographic-1');
-  var shadow = host.attachShadow({mode: 'open'});
-  shadow.innerHTML = `
+
+    <div id="infographic-1" class="infographic-host"></div>
+    <script>
+      (function() {
+        function mount() {
+          var host = document.getElementById('infographic-1');
+          if (!host) { return; }
+          if (host.shadowRoot) { return; }
+          try {
+            var shadow = host.attachShadow({mode: 'open'});
+            shadow.innerHTML = `
     <style>
       :host {
         display: block;
+        width: 100%;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; padding: 40px 48px 40px; width: 1080px; color: #0f172a; }
+  .infographic-inner { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; padding: 0; max-width: 1080px; width: 100%; color: #0f172a; }
 
   .logo { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
   .logo-icon { width: 28px; height: 22px; }
@@ -510,7 +965,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .hero-title span { color: #1D9E75; }
   .hero-sub { font-size: 15px; color: #64748b; line-height: 1.6; margin-bottom: 32px; }
 
-  .main { display: grid; grid-template-columns: 120px 1fr; gap: 20px; }
+  .main { display: grid; grid-template-columns: 120px 1fr; gap: 40px; }
 
   .timeline { display: flex; flex-direction: column; align-items: center; padding-top: 24px; position: relative; }
   .tl-section { display: flex; flex-direction: column; align-items: center; }
@@ -524,34 +979,117 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .tl-line-short { min-height: 8px; }
   .tl-arrow { font-size: 14px; color: #94a3b8; line-height: 1; }
 
-  .layers { display: flex; flex-direction: column; gap: 8px; }
-  .layer-row { display: grid; grid-template-columns: 72px 180px 1fr 220px; gap: 0; align-items: stretch; background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; }
-  .layer-row-purple { background: #faf5ff; border-color: #e9d5ff; }
+  .layers { display: flex; flex-direction: column; gap: 22px; }
+  .layer-row {
+  display: grid;
+  grid-template-columns: 72px 180px 1fr 270px;
+  align-items: stretch;
+
+  /* NEW */
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+  overflow: hidden;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* subtle lift */
+.layer-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+/* LEFT ACCENT BAR */
+.layer-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #1D9E75;
+}
+
+/* Purple variant */
+.layer-row-purple {
+  background: #ffffff;
+  border-color: #e9d5ff;
+}
+
+.layer-row-purple .layer-callout-col {
+  background: #faf5ff;
+}
+
+.layer-row-purple::before {
+  background: #7c3aed;
+}
 
   .layer-icon-col { display: flex; align-items: center; justify-content: center; padding: 20px 12px; }
-  .layer-icon-box { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .layer-icon-box { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
   .lib-teal { background: #d1fae5; }
   .lib-purple { background: #ede9fe; }
   .layer-icon-box svg { width: 26px; height: 26px; }
 
-  .layer-name-col { padding: 18px 16px 18px 4px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #e2e8f0; }
-  .layer-num { font-size: 12px; color: #94a3b8; font-weight: 600; margin-bottom: 3px; }
+  .layer-name-col {
+  padding: 18px 16px 18px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-right: 1px solid #f1f5f9;
+}
   .layer-name { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
   .layer-tool { font-size: 12px; font-weight: 600; color: #1D9E75; }
   .layer-tool-purple { color: #7c3aed; }
 
-  .layer-detail-col { padding: 18px 20px; display: flex; flex-direction: column; justify-content: center; gap: 6px; border-right: 1px solid #e2e8f0; }
+  .layer-detail-col {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+
+  border-right: 1px solid #f1f5f9; /* softer divider */
+}
   .layer-bullet { font-size: 13px; color: #334155; line-height: 1.5; padding-left: 14px; position: relative; }
+/*  .layer-bullet {*/
+/*  font-size: 13px;*/
+/*  color: #334155;*/
+/*  line-height: 1.6;*/
+/*}*/
   .layer-bullet::before { content: '•'; position: absolute; left: 0; color: #94a3b8; }
 
-  .layer-callout-col { padding: 18px 20px; display: flex; align-items: center; gap: 14px; }
+  .layer-callout-col {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  /* NEW */
+  background: #f8fafc;
+}
   .callout-icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .cib-teal { background: #d1fae5; }
   .cib-purple { background: #ede9fe; }
   .callout-icon-box svg { width: 20px; height: 20px; }
   .callout-text { font-size: 13px; font-weight: 700; color: #0f172a; line-height: 1.45; }
 
-  .footer { margin-top: 20px; background: #f1f5f9; border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .footer { margin-top: 20px; background: #f1f5f9; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow: hidden;
+  }
+
+  /* subtle lift */
+.footer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
   .footer-left { display: flex; align-items: center; gap: 14px; }
   .footer-icon { width: 38px; height: 38px; border-radius: 10px; background: #ede9fe; display: flex; align-items: center; justify-content: center; }
   .footer-icon svg { width: 20px; height: 20px; }
@@ -561,18 +1099,85 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #334155; font-weight: 500; }
   .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
 
+
+    /* Infographic 1 responsive */
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .timeline { display: none !important; }
+      /* Category label in top-right of each layer row (mobile only) */
+      .layer-row::after {
+        content: 'Built with AI';
+        position: absolute !important;
+        top: 10px !important;
+        right: 14px !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        color: #1D9E75 !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+      }
+      .layer-row-purple::after {
+        content: 'Powered by AI' !important;
+        color: #7c3aed !important;
+      }
+      /* give the name col a little top padding on mobile so the label doesn't crowd the title */
+      .layer-name-col { padding-top: 28px !important; }
+      /* footer legend redundant on mobile — row labels cover it */
+      .footer-legend { display: none !important; }
+      /* Row 1: icon + name. Row 2: details full width. Row 3: callout (icon + text, already a flex row). */
+      .layer-row {
+        grid-template-columns: 72px 1fr !important;
+        grid-template-areas:
+          "icon name"
+          "detail detail"
+          "callout callout" !important;
+      }
+      .layer-icon-col {
+        grid-area: icon !important;
+        padding: 16px 8px 16px 16px !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+      }
+      .layer-name-col {
+        grid-area: name !important;
+        border-right: none !important;
+        padding: 16px 16px 8px 0 !important;
+      }
+      .layer-detail-col {
+        grid-area: detail !important;
+        border-right: none !important;
+        padding: 4px 16px 12px !important;
+      }
+      .layer-callout-col {
+        grid-area: callout !important;
+        padding: 12px 16px 16px !important;
+        gap: 14px !important;
+        align-items: center !important;
+        border-top: 1px solid #e2e8f0 !important;
+      }
+      .callout-text { font-size: 12.5px !important; line-height: 1.45 !important; }
+    }
+    @media (max-width: 600px) {
+      .infographic-inner { padding: 0 !important; }
+      .hero-title { font-size: 32px !important; }
+      .footer { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+    }
+
+    /* RESPONSIVE OVERRIDES — injected for shadow DOM */
+    .infographic-inner { width: 100%; max-width: 100%; }
+    .infographic-inner > :first-child {
+      width: 100% !important;
+      max-max-width: 1080px; width: 100% !important;
+      padding: 40px 0 !important;
+    }
+
     </style>
     <div class="infographic-inner">
-<div class="logo">
-  <svg class="logo-icon" viewBox="0 0 28 22" fill="none">
-    <path d="M4 4h8v8H4z" fill="#1D9E75" rx="2"/>
-    <path d="M16 4h8v4h-8zM16 12h8v4h-8zM4 16h8v2H4z" fill="#1D9E75" opacity="0.4"/>
-  </svg>
-  <span class="logo-text">FLOCKR</span>
-</div>
 
-<div class="hero-title">How Flockr uses <span>AI</span> &mdash; across every layer</div>
-<div class="hero-sub">Claude operates across every layer of the business, from the first line of integration code to the conversation an operator has with their live data..</div>
+
+
 
 <div class="main">
   <div class="timeline">
@@ -618,7 +1223,6 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
       <div class="layer-name-col">
-        <div class="layer-num">1.</div>
         <div class="layer-name">Client onboarding</div>
         <div class="layer-tool">Claude Code</div>
       </div>
@@ -645,12 +1249,11 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
       <div class="layer-name-col">
-        <div class="layer-num">2.</div>
         <div class="layer-name">Development</div>
         <div class="layer-tool">Claude Code + Chat</div>
       </div>
       <div class="layer-detail-col">
-        <div class="layer-bullet">Entire codebase written in Claude Code — Lambda, React portal, browser tag, SQL, deploy tooling</div>
+        <div class="layer-bullet">Entire codebase written in Claude Code — data pipeline, operator portal, browser integration, analytics, and deploy tooling</div>
         <div class="layer-bullet">Claude Chat holds all product knowledge — every decision, spec, and review in one place</div>
       </div>
       <div class="layer-callout-col">
@@ -674,12 +1277,11 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
       <div class="layer-name-col">
-        <div class="layer-num">3.</div>
         <div class="layer-name">Governance</div>
         <div class="layer-tool">Claude Chat</div>
       </div>
       <div class="layer-detail-col">
-        <div class="layer-bullet">CLAUDE.md keeps full architectural context alive — every session starts with the complete picture</div>
+        <div class="layer-bullet">Architecture memory keeps full system context alive — every session starts with the complete picture</div>
         <div class="layer-bullet">Tiered source authority — source code always wins over documentation</div>
         <div class="layer-bullet">Audit cycle catches real conflicts before they corrupt the knowledge base</div>
       </div>
@@ -702,7 +1304,6 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
       <div class="layer-name-col">
-        <div class="layer-num">4.</div>
         <div class="layer-name">Product intelligence</div>
         <div class="layer-tool">Claude API</div>
       </div>
@@ -730,13 +1331,12 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
         </div>
       </div>
       <div class="layer-name-col" style="border-color:#e9d5ff;">
-        <div class="layer-num">5.</div>
         <div class="layer-name">Signal</div>
         <div class="layer-tool layer-tool-purple">Claude API</div>
       </div>
       <div class="layer-detail-col" style="border-color:#e9d5ff;">
         <div class="layer-bullet">Knows how Flockr works, your configuration, and your live data — all three at once</div>
-        <div class="layer-bullet">Ask why a product isn't messaged, what's at risk, or what the adaptive model changed</div>
+        <div class="layer-bullet">Ask how a product is performing, where demand is building, or how the adaptive model is evolving</div>
       </div>
       <div class="layer-callout-col">
         <div class="callout-icon-box cib-purple">
@@ -766,119 +1366,717 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 </div>
     </div>
   `;
-})();
-</script>
+          } catch(e) {
+            host.innerHTML = '<div style="padding: 24px; color: #7C3AED; font-family: sans-serif; text-align:center; font-size: 13px;">Infographic render error: ' + (e && e.message ? e.message : e) + '</div>';
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', mount);
+        } else {
+          mount();
+        }
+      })();
+    </script>
 
-  <div class="glance">
-    <div class="glance-row">
-      <div class="glance-left"><span class="tool-pill tp-code">Claude Code</span></div>
-      <div class="glance-right">All code &mdash; backend Lambda, React portal, browser tag, client modules, SQL migrations, deploy scripts, and automated quality checks</div>
+    <div class="glance">
+      <div class="glance-row">
+        <div class="glance-left"><span class="tool-pill tp-code">Claude Code</span></div>
+        <div class="glance-right">All code &mdash; the data pipeline, operator portal, browser integration, client-specific modules, analytics, and automated quality checks</div>
+      </div>
+      <div class="glance-row">
+        <div class="glance-left"><span class="tool-pill tp-chat">Claude Chat</span></div>
+        <div class="glance-right">Structured project knowledge drives product decisions, reviews, audits, spec generation, and documentation governance</div>
+      </div>
+      <div class="glance-row">
+        <div class="glance-left"><span class="tool-pill tp-api">Claude API</span></div>
+        <div class="glance-right">Powers Signal &mdash; the AI assistant embedded in the Flockr portal, account-specific, with live data access and persistence across sessions</div>
+      </div>
     </div>
-    <div class="glance-row">
-      <div class="glance-left"><span class="tool-pill tp-chat">Claude Chat</span></div>
-      <div class="glance-right">Structured project knowledge drives product decisions, reviews, audits, spec generation, and documentation governance</div>
+  </div>
+
+</div>
+
+  <!-- ── SIGNAL ── -->
+  <div class="doc-section" id="sec-h">
+    <div class="doc-section-inner">
+      <div class="dark-panel">
+        <h2>Signal &mdash; the AI assistant embedded in the portal</h2>
+        <div class="dp-meta">
+          <span><span class="dp-dot" style="background:#1D9E75;"></span>Claude API</span>
+          <span><span class="dp-dot" style="background:#7C3AED;"></span>Three knowledge layers</span>
+          <span><span class="dp-dot" style="background:#0284C7;"></span>Persistent across every page</span>
+          <span><span class="dp-dot" style="background:#D97706;"></span>Source-attributed answers</span>
+        </div>
+      </div>
+      <p class="intro">Signal is the stand-out capability of the Flockr platform. Where the rest of Flockr automates signal evaluation, message selection, and attribution measurement, Signal makes all of it conversational. It is the interface through which a commercial team &mdash; not just a data analyst &mdash; can engage with demand intelligence, act on it, understand it, and explain it.</p>
+      <p class="body">Every answer is grounded in three layers of knowledge: how Flockr works, the live state of the specific account, and the account&rsquo;s actual data. Accessible from every page via a persistent panel that does not reset when navigating.</p>
+
+      <div id="infographic-2" class="infographic-host"></div>
+      <script>
+        (function() {
+          function mount() {
+            var host = document.getElementById('infographic-2');
+            if (!host) { return; }
+            if (host.shadowRoot) { return; }
+            try {
+              var shadow = host.attachShadow({mode: 'open'});
+              shadow.innerHTML = `
+    <style>
+      :host { display: block; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .infographic-inner {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #fff;
+    max-width: 1080px; width: 100%;
+    color: #0f172a;
+  }
+
+  .logo { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+  .logo-text { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; color: #0f172a; }
+
+  .hero { margin-bottom: 28px; display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;}
+  .hero-title { font-size: 52px; font-weight: 800; line-height: 1.05; color: #0f172a; margin-bottom: 6px; }
+  .hero-sub-label { font-size: 16px; font-weight: 700; color: #7c3aed; margin-bottom: 8px; text-align: center; }
+  .hero-sub { font-size: 14px; color: #64748b; line-height: 1.65; max-width: 420px; }
+
+  /* ── Main three-column layout ── */
+  .main {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 80px;
+    background: #ffffff;
+    background: linear-gradient(171deg, rgba(255, 255, 255, 1) 0%, rgba(242, 240, 240, 1) 100%);
+    padding:30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+  }
+
+  /* Left col: knowledge cards stacked */
+  .col-left {
+    display: table-cell;
+    width: 30%;
+    vertical-align: middle;
+    padding-right: 0;
+  }
+  .kstack { display: flex; flex-direction: column; gap: 30px; }
+  .kcard {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.kcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+  .kc-hdr { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
+  .kc-icon { width: 44px; height: 44px; border-radius: 8px; background: #d1fae5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .kc-icon svg { width: 22px; height: 22px; }
+  .kc-title { font-size: 17px; font-weight: 700; color: #0f172a; }
+  .kc-body { font-size: 12px; color: #0f172a; line-height: 1.55; }
+  .kc-qs { display: flex; flex-direction: column; gap: 3px; }
+  .kc-q { font-size: 12px; color: #0f172a; padding-left: 9px; border-left: 2px solid #1D9E75; line-height: 1.55; }
+
+  /* Left arrow col */
+  .col-arr-l {
+    display: table-cell;
+    width: 56px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 4px;
+  }
+
+  /* Centre: Signal */
+  .col-mid {
+    display: table-cell;
+    width: 190px;
+    vertical-align: middle;
+  }
+  .signal-box {
+    background: #7c3aed;
+    border-radius: 20px;
+    padding: 28px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  transition: all 0.2s ease;}
+
+
+
+  .signal-avatar {
+    width: 150px; height: 150px;
+
+  }
+  /*.signal-avatar svg { width: 28px; height: 28px; }*/
+  .signal-name { font-size: 20px; font-weight: 800; color: #fff; }
+  .signal-desc { font-size: 11.5px; color: rgba(255,255,255,0.7); line-height: 1.55; }
+
+  /* Right arrow col */
+  .col-arr-r {
+    display: table-cell;
+    width: 56px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 4px;
+  }
+
+  /* Right col: domain cards stacked */
+  .col-right {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 0;
+    width:30%;
+  }
+  .dstack { display: flex; flex-direction: column; gap: 30px; }
+  .dcard {
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 12px;
+    padding: 14px 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.dcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+  .dc-hdr { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+  .dc-icon { width: 44px; height: 44px; border-radius: 7px; background: #ede9fe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .dc-icon svg { width: 22x; height: 22px; }
+  .dc-title { font-size: 17px; font-weight: 700; color: #0f172a; }
+  .dc-qs { display: flex; flex-direction: column; gap: 3px; }
+  .dc-q { font-size: 12px; color: #0f172a; padding-left: 9px; border-left: 2px solid #c4b5fd; line-height: 1.55; }
+
+
+
+  /* Arrow helpers */
+  .arr-stack { display: flex; flex-direction: column; gap: 0; align-items: center; justify-content: center; height: 100%; }
+  .arr-row { display: flex; align-items: center; width: 48px; margin: 14px 0; }
+  .arr-row-dash {
+    flex: 1;
+    height: 1.5px;
+    background: repeating-linear-gradient(to right, #a78bfa 0, #a78bfa 5px, transparent 5px, transparent 10px);
+  }
+  .arr-head { font-size: 15px; color: #a78bfa; line-height: 1; flex-shrink: 0; }
+
+  /* ── Bottom two-column ── */
+  .bottom {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 40px 0;
+    margin-bottom: 80px;
+  }
+  .bottom-left { display: table-cell; width: 50%; vertical-align: top; }
+  .bottom-right { display: table-cell; width: 50%; vertical-align: top; }
+
+  .examples-box {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    height: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.examples-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+  .ex-title { font-size: 11px; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .ex-q { font-size: 12.5px; color: #4c1d95; line-height: 1.55; font-style: italic; border-left: 2px solid #a78bfa; padding-left: 10px; margin-bottom: 9px; }
+
+  .limits-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 18px 20px;
+    height: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+.limits-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+  .limits-title { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .limit { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+  .limit-dot { width: 6px; height: 6px; border-radius: 50%; background: #94a3b8; margin-top: 5px; flex-shrink: 0; }
+  .limit-text { font-size: 12.5px; color: #475569; line-height: 1.5; }
+  .limit-text b { color: #0f172a; font-weight: 600; }
+
+  .footer {
+    margin-top: 18px;
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+  .footer-left { display: flex; align-items: center; gap: 14px; }
+  .footer-icon { width: 36px; height: 36px; border-radius: 9px; background: rgba(124,58,237,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .footer-icon svg { width: 18px; height: 18px; }
+  .footer-tagline { font-size: 14px; font-weight: 700; color: #fff; }
+  .footer-legend { display: flex; gap: 16px; white-space: nowrap; }
+  .leg { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: rgba(255,255,255,0.6); font-weight: 500; }
+  .leg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+
+    /* Infographic 3 closed loop responsive */
+    @media (max-width: 900px) {
+      /* Collapse the 3-column table layout so cells stack vertically */
+      .main, .main tbody, .main tr { display: block !important; width: 100% !important; }
+      .col-left, .col-mid, .col-right {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 0 16px 0 !important;
+      }
+      .col-mid { margin: 12px 0 !important; }
+      .col-arr-l, .col-arr-r { display: none !important; }
+      .kstack { gap: 12px !important; }
+      /* Shrink the big purple Signal box so it fits */
+      .signal-box { padding: 28px 20px !important; }
+      .signal-name { font-size: 26px !important; }
+      /* Bottom section */
+      .bottom { display: block !important; border-spacing: 0 !important; }
+      .bottom-left, .bottom-right {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 12px !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .infographic-inner { padding: 0 !important; }
+      .hero-title { font-size: 30px !important; }
+      .hero-sub-label { font-size: 13px !important; }
+      .kcard, .dcard { padding: 14px !important; }
+      .kc-title, .dc-title { font-size: 14px !important; }
+      .kc-q, .dc-q, .kc-body { font-size: 12.5px !important; }
+      .signal-box { padding: 22px 16px !important; }
+      .signal-name { font-size: 22px !important; }
+      .footer { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+    }
+
+    /* RESPONSIVE OVERRIDES — injected for shadow DOM */
+    .infographic-inner { width: 100%; max-width: 100%; }
+    .infographic-inner > :first-child {
+      width: 100% !important;
+      max-max-width: 1080px; width: 100% !important;
+      padding: 24px 28px !important;
+    }
+
+    </style>
+    <div class="infographic-inner">
+
+
+<div class="hero">
+  <div class="hero-title">Signal</div>
+  <div class="hero-sub-label">Flockr's AI assistant</div>
+</div>
+
+<!-- Main three-column: knowledge | arrows | Signal | arrows | domains -->
+<table class="main">
+  <tr>
+
+    <!-- Left: knowledge cards stacked -->
+    <td class="col-left">
+      <div class="kstack">
+        <div class="kcard">
+          <div class="kc-hdr">
+            <div class="kc-icon">
+              <svg viewBox="0 0 17 17" fill="none"><path d="M2 3h10a1.5 1.5 0 011.5 1.5v7A1.5 1.5 0 0112 13H5.5L2 16V4.5A1.5 1.5 0 013.5 3H2z" stroke="#065f46" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="kc-title">System knowledge</div>
+          </div>
+          <div class="kc-qs">
+            <div class="kc-q">Every rule, every metric, every formula</div>
+            <div class="kc-q">System architecture, docs, APIs</div>
+            <div class="kc-q">Sourced directly from Flockr's code and verified every cycle</div>
+          </div>
+
+        </div>
+        <div class="kcard">
+          <div class="kc-hdr">
+            <div class="kc-icon">
+              <svg viewBox="0 0 17 17" fill="none"><rect x="2" y="2" width="13" height="13" rx="2.5" stroke="#065f46" stroke-width="1.4"/><line x1="4.5" y1="5.5" x2="12.5" y2="5.5" stroke="#065f46" stroke-width="1.3" stroke-linecap="round"/><line x1="4.5" y1="8.5" x2="9.5" y2="8.5" stroke="#065f46" stroke-width="1.3" stroke-linecap="round"/><line x1="4.5" y1="11.5" x2="11" y2="11.5" stroke="#065f46" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="kc-title">Your configuration</div>
+          </div>
+          <div class="kc-qs">
+            <div class="kc-q">Active surfaces, display variants</div>
+            <div class="kc-q">Thresholds, pipeline overrides</div>
+            <div class="kc-q">Client account, specifically</div>
+          </div>
+
+        </div>
+        <div class="kcard">
+          <div class="kc-hdr">
+            <div class="kc-icon">
+              <svg viewBox="0 0 17 17" fill="none"><polyline points="1.5,12.5 4.5,7.5 7.5,10 10.5,5 13.5,8 15.5,5.5" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15.5" cy="5.5" r="1.4" fill="#065f46" opacity="0.6"/></svg>
+            </div>
+            <div class="kc-title">Live data</div>
+          </div>
+          <div class="kc-body">Real figures from your store, right now — activation rates, attribution, pipeline traces on demand.</div>
+        </div>
+      </div>
+    </td>
+
+    <!-- Left arrows -->
+    <td class="col-arr-l">
+      <div class="arr-stack">
+        <div class="arr-row"><div class="arr-row-dash"></div><div class="arr-head">→</div></div>
+        <div class="arr-row"><div class="arr-row-dash"></div><div class="arr-head">→</div></div>
+        <div class="arr-row"><div class="arr-row-dash"></div><div class="arr-head">→</div></div>
+      </div>
+    </td>
+
+    <!-- Signal centre -->
+    <td class="col-mid">
+      <div class="signal-box">
+        <div class="signal-avatar">
+          <svg viewBox="0 0 80 80" style="width: 100%; height: 100%;">
+  <circle cx="40" cy="40" r="10" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5">
+    <animate attributeName="r" values="10;32" dur="2.8s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.9;0" dur="2.8s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="40" cy="40" r="10" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5">
+    <animate attributeName="r" values="10;32" dur="2.8s" begin="0.9s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.9;0" dur="2.8s" begin="0.9s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="40" cy="40" r="10" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5">
+    <animate attributeName="r" values="10;32" dur="2.8s" begin="1.8s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.9;0" dur="2.8s" begin="1.8s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="40" cy="40" r="7" fill="white"/>
+</svg>
+        </div>
+        <div class="signal-name">Signal</div>
+        <div class="signal-desc">Persistent on every page<br>Source-attributed answers</div>
+      </div>
+    </td>
+
+    <!-- Right arrows -->
+    <td class="col-arr-r">
+      <div class="arr-stack">
+        <div class="arr-row"><div class="arr-head">→</div><div class="arr-row-dash"></div></div>
+        <div class="arr-row"><div class="arr-head">→</div><div class="arr-row-dash"></div></div>
+        <div class="arr-row"><div class="arr-head">→</div><div class="arr-row-dash"></div></div>
+      </div>
+    </td>
+
+    <!-- Right: domain cards stacked -->
+    <td class="col-right">
+      <div class="dstack">
+        <div class="dcard">
+          <div class="dc-hdr">
+            <div class="dc-icon">
+              <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#4c1d95" stroke-width="1.3"/><path d="M5.5 6c0-1.1.9-2 1.5-2s1.5.9 1.5 2c0 .9-.9 1.4-1.5 1.7" stroke="#4c1d95" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="10.5" r="0.7" fill="#4c1d95"/></svg>
+            </div>
+            <div class="dc-title">Demand intelligence</div>
+          </div>
+          <div class="dc-qs">
+            <div class="dc-q">Which products should I restock?</div>
+            <div class="dc-q">Which products have falling demand?</div>
+            <div class="dc-q">Which new products are surging?</div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="dc-hdr">
+            <div class="dc-icon">
+              <svg viewBox="0 0 14 14" fill="none"><path d="M2 11l3-3 2.5 2.5 4-5.5" stroke="#4c1d95" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 5.5h2.5V3" stroke="#4c1d95" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="dc-title">Action Layer</div>
+          </div>
+          <div class="dc-qs">
+            <div class="dc-q">Why did this action fire?</div>
+            <div class="dc-q">Suggest content for this product/page?</div>
+            <div class="dc-q">Write a restock brief for the team.</div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="dc-hdr">
+            <div class="dc-icon">
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1.5 10Q3.5 5.5 5.5 7.5Q7.5 9.5 9.5 4Q11 1.5 12.5 3.5" stroke="#4c1d95" stroke-width="1.4" stroke-linecap="round"/><circle cx="12.5" cy="3.5" r="1.3" fill="#4c1d95" opacity="0.5"/></svg>
+            </div>
+            <div class="dc-title">Adaptive model</div>
+          </div>
+          <div class="dc-qs">
+            <div class="dc-q">Why is scarcity dominating PDP lately?</div>
+            <div class="dc-q">What has the model learned about our store?</div>
+            <div class="dc-q">Is our signal mix working as expected?</div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+<!-- Bottom two columns -->
+<table class="bottom">
+  <tr>
+    <td class="bottom-left">
+      <div class="examples-box">
+        <div class="ex-title">Signal in action</div>
+        <div class="ex-q">"448 products at scarcity risk — 19 are high priority and still showing active demand."</div>
+        <div class="ex-q">"Your conversion lift for the last 14 days is +29%. Tier 5 (cart visible) is running at 2.1×."</div>
+        <div class="ex-q">"No signal family is qualifying — that product won't appear until demand recovers."</div>
+        <div class="ex-q" style="margin-bottom:0;">"The adaptive model has learned scarcity converts better on PDP. Here's the CTR data."</div>
+      </div>
+    </td>
+    <td class="bottom-right">
+      <div class="limits-box">
+        <div class="limits-title">What Signal does not do</div>
+        <div class="limit"><div class="limit-dot"></div><div class="limit-text"><b>No config changes</b> — explains trade-offs, but changes happen in the portal</div></div>
+        <div class="limit"><div class="limit-dot"></div><div class="limit-text"><b>No action execution</b> — helps evaluate and communicate, but decisions stay with the operator</div></div>
+        <div class="limit"><div class="limit-dot"></div><div class="limit-text"><b>No external access</b> — works only within Flockr's data and configuration</div></div>
+        <div class="limit" style="margin-bottom:0;"><div class="limit-dot"></div><div class="limit-text"><b>No speculation</b> — says so clearly when something is outside its context</div></div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-icon">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M9 2l2 4.5 5 .7-3.5 3.4.8 4.9L9 13l-4.3 2.5.8-4.9L2 7.2l5-.7z" stroke="#a78bfa" stroke-width="1.5" stroke-linejoin="round"/></svg>
     </div>
-    <div class="glance-row">
-      <div class="glance-left"><span class="tool-pill tp-api">Claude API</span></div>
-      <div class="glance-right">Powers Signal &mdash; the AI assistant embedded in the Flockr portal, account-specific, with live data access and persistence across sessions</div>
+    <div class="footer-tagline">Decisions stay with the operator. Signal makes them faster, better-informed, and easier to act on.</div>
+  </div>
+  <div class="footer-legend">
+    <div class="leg"><div class="leg-dot" style="background:#1D9E75;"></div>Knowledge layers</div>
+    <div class="leg"><div class="leg-dot" style="background:#7c3aed;"></div>Signal</div>
+    <div class="leg"><div class="leg-dot" style="background:#4c1d95;"></div>Query domains</div>
+  </div>
+</div>
+    </div>
+  `;
+            } catch(e) {
+              host.innerHTML = '<div style="padding: 24px; color: #7C3AED; font-family: sans-serif; text-align:center; font-size: 13px;">Infographic render error: ' + (e && e.message ? e.message : e) + '</div>';
+            }
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', mount);
+          } else {
+            mount();
+          }
+        })();
+      </script>
+
+      <div class="section-label purple" id="sec-h-layers" style="margin-top:32px;">Three knowledge layers</div>
+      <div class="three-col">
+        <div class="knowledge-layer">
+          <h3 class="teal">Layer 1 &mdash; How Flockr works</h3>
+          <p class="body">Complete knowledge of every concept, metric, and feature &mdash; sourced from the 17-file RAG knowledge base built directly from source code. Signal can explain the exposure tier attribution model, why attention signals are ineligible on the cart drawer, what a momentum BREAKOUT state means, or how the slot budget is calculated.</p>
+        </div>
+        <div class="knowledge-layer">
+          <h3 class="teal">Layer 2 &mdash; Client's configuration</h3>
+          <p class="body">Signal knows the specific account&rsquo;s setup: which surfaces are active, which display variants are configured, whether any pipeline overrides are in place, and what mode the account is running. Answers are account-specific, not generic.</p>
+        </div>
+        <div class="knowledge-layer">
+          <h3 class="teal">Layer 3 &mdash; Client's live data</h3>
+          <p class="body">Signal queries the account&rsquo;s analytics directly &mdash; returning conversational analytics, e.g. the conversion rate lift over a date range, which signal families are firing most, or tracing any product through the pipeline.</p>
+        </div>
+      </div>
+
+      <div class="section-label purple" id="sec-h-practice" style="margin-top:36px;">Signal in practice</div>
+      <div class="two-col">
+        <div>
+          <h3 class="purple">Understanding a metric</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> What does demand coverage mean?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>Demand coverage is the percentage of products evaluated by Flockr that had at least one qualifying signal. If Flockr evaluated 4,200 products and 3,948 had at least one qualifying signal, demand coverage would be 94%. A low figure typically means either signal data is sparse or thresholds are set higher than your traffic volume supports.</em></div>
+          </div>
+          <h3 class="purple">Why a product isn&rsquo;t being messaged</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> Why isn&rsquo;t the Logo Hoody Black getting any messages?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>The Logo Hoody Black has fading demand &mdash; views down 15% since peak and no purchases in the last 7 days. Purchase not qualifying (22 views in last 24h, zero purchases); Momentum below threshold (ratio 0.36&times;); Attention: 0 views in last hour &mdash; below minimum of 5 for hour1. No signal family is meeting its minimum threshold. Flockr doesn&rsquo;t fabricate urgency when no genuine signal exists.</em></div>
+          </div>
+          <h3 class="purple">Live attribution data</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> What was our conversion rate lift over the last 14 days?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>Your conversion rate lift for the last 14 days is +29%. Flockr session order rate was 1.2% versus a baseline of 0.9%. Your tier 5 (cart visible) sessions are showing the strongest lift at approximately 2.1&times;, consistent with the dose-response pattern if Flockr is influencing purchase decisions at the cart stage.</em></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="purple">Catalogue monitoring</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> Are there any products I should be paying attention to right now?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>448 products are currently at scarcity risk &mdash; 19 are high priority, both low in stock and still attracting active demand. You have 5 demand spikes detected in the last 24 hours: three are the same pattern &mdash; purchases jumping from 1 to 3 on sets-category products. This is the early signal pattern that precedes a BUILDING momentum state.</em></div>
+          </div>
+          <h3 class="purple">Evaluating an Action Layer recommendation</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> The Logo Hoody is showing &ldquo;Consider markdown&rdquo; &mdash; is that right?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>The classification comes from three inputs: a 15% decline since peak, 4 days declining, and a Collapsed purchase trend. The product has 32 units remaining &mdash; if you run a markdown and demand recovers, you have limited stock to capitalise on. Promote might clarify whether the decline is structural before committing to a price change.</em></div>
+          </div>
+          <h3 class="purple">Writing a team brief</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> Can you write a brief for our buying team on the restock situation?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>19 products require immediate restock action. All have under 5 days of stock remaining at current sell-through rates and are showing stable or accelerating demand. Flockr is already activating scarcity messaging for qualifying products, which is expected to increase purchase velocity &mdash; meaning runway may shorten faster than the current estimate.</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label purple" id="sec-h-scoring" style="margin-top:36px;">Signal and the adaptive scoring model</div>
+      <div class="two-col">
+        <div>
+          <h3 class="purple">Understanding scoring changes</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> Why is scarcity winning so many slots on PDP lately?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>The adaptive model has observed that scarcity signals on PDP are converting at a significantly higher rate than purchase signals. The proofStrength component for scarcity on PDP has been tuned upward. Check the Click rate by signal type table on Analytics Signals, filtered to PDP. If scarcity&rsquo;s visible CTR is materially higher than purchase&rsquo;s, the model is correct.</em></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="purple">Cross-surface coordination</h3>
+          <div class="conv">
+            <div class="conv-q"><strong>You:</strong> Is Flockr coordinating what a shopper sees across pages?</div>
+            <div class="conv-a"><strong>Signal:</strong> <em>The adaptive model coordinates across surfaces within a session. Each selection is made independently per page load, but scoring weights are informed by what the shopper has already seen. If a shopper has seen and ignored a scarcity message twice in the same session, the model reduces scarcity&rsquo;s weight for subsequent page loads. The orchestration layer affects which family wins the slot &mdash; not whether the underlying signal is genuine.</em></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="section-label purple" style="margin-top:36px;">Screenshots &mdash; to be added</div>
+      <div class="ss-grid">
+        <div class="ss-ph">[Screenshot: Home page &mdash; Signal card with contextual suggested prompts]</div>
+        <div class="ss-ph">[Screenshot: Signal panel &mdash; example conversation with source badges]</div>
+        <div class="ss-ph">[Screenshot: Action Layer &mdash; Signal explaining a classification decision]</div>
+        <div class="ss-ph">[Screenshot: Adaptive model &mdash; Signal answering a scoring model question]</div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- ── ONBOARDING ── -->
+<div class="doc-section" id="sec-a">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Client onboarding</span> &mdash; site analysis and integration generation</h2>
+    <p class="intro">Integrating Flockr into a client&rsquo;s website is an AI workflow. Claude Code analyses the live website and generates the site-specific integration configuration &mdash; a task that previously required manual front-end engineering work.</p>
+    <div class="two-col">
+      <div>
+        <h3 class="teal">What Claude Code does</h3>
+        <ul class="blist">
+          <li><strong>Site analysis</strong> &mdash; inspects URL structure, DOM patterns, page type detection, product ID locations, and how each surface renders in the client&rsquo;s specific theme.</li>
+          <li><strong>Placement selection</strong> &mdash; identifies the optimal DOM injection target per surface with separate mobile and desktop handling.</li>
+          <li><strong>Event model</strong> &mdash; Flockr has a configurable event model that adapts to each client&rsquo;s data layer, normalising their shopper behaviour events into a consistent schema.</li>
+          <li><strong>Dynamic content handling</strong> &mdash; adapts to each site&rsquo;s live DOM behaviour, including dynamic panels, asynchronous content, and real-time UI changes.</li>
+          <li><strong>Integration module</strong> &mdash; produces a complete, site-specific integration &mdash; every piece of configuration a new storefront needs to go live.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="teal">AI-generated integration, independently maintained core</h3>
+        <p class="body">The shared core handles the universal mechanics &mdash; session tracking, message rendering, visibility, attribution, and slot allocation. The AI-generated integration module handles everything site-specific.</p>
+        <p class="body">Core upgrades roll out independently of any client configuration, so improvements reach the entire fleet without re-touching individual storefronts. Every integration is reviewed and tested in preview modes before going live.</p>
+        <div class="callout teal"><p>What used to require days of front-end engineering is now a single AI-assisted session. Integration scales without scaling the team.</p></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ── A: ONBOARDING ── -->
-<div class="doc-section">
-  <div class="section-label teal">A &nbsp;&middot;&nbsp; AI-powered client onboarding</div>
-  <h2 class="section-title"><span class="lt">A</span> &middot; Client onboarding &mdash; site analysis and integration generation</h2>
-  <p class="intro">Integrating Flockr into a client&rsquo;s website is an AI workflow. Claude Code analyses the live website and generates the site-specific integration configuration &mdash; a task that previously required manual front-end engineering work.</p>
-  <div class="two-col">
-    <div>
-      <h3 class="teal">What Claude Code does</h3>
-      <ul class="blist">
-        <li><strong>Site analysis</strong> &mdash; inspects URL structure, DOM patterns, page type detection, product ID locations, and how each surface renders in the client&rsquo;s specific theme.</li>
-        <li><strong>Placement selection</strong> &mdash; identifies the optimal DOM injection target per surface with separate mobile and desktop handling.</li>
-        <li><strong>Event extraction</strong> &mdash; writes DataLayer handlers normalising the client&rsquo;s event format into Flockr&rsquo;s schema for purchase, ATB, wishlist, and remove-from-cart events.</li>
-        <li><strong>Observer strategy</strong> &mdash; writes MutationObserver and IntersectionObserver logic for cart drawer lifecycle, async carousel injection, and predictive search deduplication.</li>
-        <li><strong>module.js generation</strong> &mdash; assembles into the client config implementing <code>getData()</code>, <code>getContainer()</code>, <code>getClickTarget()</code>, and <code>dataLayerHandlers</code>.</li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="teal">The two-file architecture</h3>
-      <p class="body">The generated module is reviewed, tested via <code>?flockrLocal</code> and <code>?flockrPreview</code>, then deployed. The shared <code>flockr.js</code> core calls <code>registerModule()</code> and <code>execute()</code>.</p>
-      <p class="body">The shared core handles visitor/session identification, event batching, message rendering, visibility tracking, product state tracking, and slot budget calculation (<code>ceil(products&divide;6)</code>).</p>
-      <p class="body">The client module contains only site-specific logic. The core is upgraded independently of any client configuration.</p>
-      <div class="callout teal"><p>What used to require days of front-end engineering is now a single Claude Code session. The two-file architecture means integration scales without scaling the team.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── B: GOVERNANCE ── -->
-<div class="doc-section">
-  <div class="section-label teal">B &nbsp;&middot;&nbsp; Development governance model</div>
-  <h2 class="section-title"><span class="lt">B</span> &middot; The development governance model</h2>
-  <p class="intro">The answer to &ldquo;how do you adopt AI in a development workflow without the codebase degrading?&rdquo; requires three things: persistent working memory, a tiered source-authority model, and automated compliance checks.</p>
-  <div class="two-col">
-    <div>
-      <h3 class="teal">The dual-tool pattern</h3>
-      <p class="body"><strong>Claude Code</strong> handles all implementation. <strong>Claude Chat</strong> handles strategy, architecture, and review. Chat produces a structured spec with a reference document checklist; Code implements and updates all reference documents in the same commit.</p>
-      <h3 class="teal">Working memory: CLAUDE.md</h3>
-      <p class="body"><code>CLAUDE.md</code> carries the full context Claude Code needs across sessions: the 13-step bundle pipeline, data store definitions, feature flags, signal thresholds, eligibility rules, and coding conventions. Its accuracy is enforced by the audit cycle.</p>
-      <h3 class="teal">Tiered source authority</h3>
-      <table class="dtable">
-        <thead><tr><th>Tier</th><th>Source</th><th>Authority</th></tr></thead>
-        <tbody>
+<!-- ── GOVERNANCE ── -->
+<div class="doc-section" id="sec-b">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Development</span> - Governance model</h2>
+    <p class="intro">Adopting AI in a development workflow requires three things working together: persistent architectural memory, a clear source-authority model, and automated compliance checks. Without all three, codebases drift. With them, AI-built systems stay coherent indefinitely.</p>
+    <div class="two-col">
+      <div>
+        <h3 class="teal" id="sec-b-tools">The dual-tool pattern</h3>
+        <p class="body"><strong>Claude Code</strong> handles all implementation. <strong>Claude Chat</strong> handles strategy, architecture, and review. Chat produces a structured spec with a reference-document checklist; Code implements it and updates every reference document in the same commit.</p>
+        <h3 class="teal" id="sec-b-memory">Architecture memory</h3>
+        <p class="body">A single versioned file carries the full system context Claude Code needs across sessions: the bundle pipeline, data stores, feature flags, signal thresholds, eligibility rules, and coding conventions. Its accuracy is enforced by the audit cycle.</p>
+        <h3 class="teal" id="sec-b-authority">Tiered source authority</h3>
+        <table class="dtable">
+          <thead><tr><th>Tier</th><th>Source</th><th>Authority</th></tr></thead>
+          <tbody>
           <tr><td><strong>Tier 1</strong></td><td>Source code</td><td>Always correct. Docs that conflict with code are wrong.</td></tr>
-          <tr><td><strong>Tier 2</strong></td><td>Primary written knowledge</td><td>portal-sidebar-content.json (172+ entries), information-architecture.md, CLAUDE.md</td></tr>
+          <tr><td><strong>Tier 2</strong></td><td>Primary written knowledge</td><td>Sidebar content catalogue (172+ entries), information architecture, architecture memory</td></tr>
           <tr><td><strong>Tier 3</strong></td><td>Structural / diagnostic</td><td>Sidebar coverage index, known-issues register, glossary</td></tr>
           <tr><td><strong>Tier 4</strong></td><td>Visual verification</td><td>29 checkpoint screenshots &mdash; screenshot wins over written description</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <h3 class="teal">Automated compliance checks</h3>
-      <ul class="blist">
-        <li><code>npm run check:tables</code> &mdash; validates every portal table uses correct hook, toolbar, sortable headers, and pagination. Non-zero exit on violation.</li>
-        <li><code>npm run check:info</code> &mdash; verifies 100% InfoIcon coverage across 172+ column and section headers.</li>
-        <li><code>BUNDLE_AUDIT_ENABLED</code> &mdash; production audit trail for every signal selection decision.</li>
-      </ul>
-      <h3 class="teal" style="margin-top:20px;">Checkpoint and review cycle</h3>
-      <p class="body"><code>npm run checkpoint</code> rotates 29 screenshots to <code>--prior</code>, captures current states via Puppeteer, generates a visual changelog from git commits, and advances the checkpoint tag to HEAD.</p>
-      <p class="body">A saved review prompt is applied fresh per checkpoint in Claude Chat. Findings produce a structured spec with a mandatory reference document checklist. Claude Code implements and updates all reference documents in the same commit.</p>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 class="teal" id="sec-b-compliance">Automated compliance checks</h3>
+        <ul class="blist">
+          <li><strong>Table consistency check</strong> &mdash; validates that every data table in the portal conforms to the standard interaction pattern: correct controls, sortable headers, pagination, and filtering. Blocks deploys on violation.</li>
+          <li><strong>Explanatory coverage check</strong> &mdash; verifies 100% info-text coverage across 172+ column and section headers. Every metric in the portal has a definition.</li>
+          <li><strong>Production audit trail</strong> &mdash; every signal selection decision is logged with its eligibility, scoring, slot allocation, and rejection reasons.</li>
+        </ul>
+        <h3 class="teal" id="sec-b-review" style="margin-top:20px;">Checkpoint and review cycle</h3>
+        <p class="body">A single checkpoint command rotates the 29-screenshot review set to a prior version, captures the current portal states, generates a visual changelog from committed changes, and advances the checkpoint marker.</p>
+        <p class="body">A saved review prompt is then applied fresh per checkpoint in Claude Chat. Findings produce a structured spec with a mandatory reference-document checklist, which Claude Code implements alongside every reference-document update in the same commit.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ── B': CLOSED LOOP ── -->
-<div class="doc-section">
-  <div class="section-label teal">B&prime; &nbsp;&middot;&nbsp; The closed loop</div>
-  <h2 class="section-title"><span class="lt">B&prime;</span> &middot; The closed loop &mdash; AI development that stays coherent over time</h2>
-  <p class="intro-sub">Two Claude surfaces, separate authority, one governed system</p>
-  <p class="intro">Most teams using AI in development treat it as a faster pair programmer. The codebase still drifts, the docs fall behind, and the AI doesn&rsquo;t retain what it built two weeks ago. Flockr&rsquo;s workflow is different: neither surface is trusted to review its own work, state lives in committed files rather than conversation, and every session reviews every layer &mdash; not just what changed.</p>
+<!-- ── CLOSED LOOP ── -->
+<div class="doc-section" id="sec-bprime">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">The closed loop</span> &mdash; AI development that stays coherent over time</h2>
+    <p class="intro-sub">Two Claude surfaces, separate authority, one governed system</p>
+    <p class="intro">Most teams using AI in development treat it as a faster pair programmer. The codebase still drifts, the docs fall behind, and the AI doesn&rsquo;t retain what it built two weeks ago. Flockr&rsquo;s workflow is different: neither surface is trusted to review its own work, state lives in committed files rather than conversation, and every session reviews every layer &mdash; not just what changed.</p>
 
-  <div id="infographic-3" class="infographic-host"></div>
-<script>
-(function() {
-  var host = document.getElementById('infographic-3');
-  var shadow = host.attachShadow({mode: 'open'});
-  shadow.innerHTML = `
+    <div id="infographic-3" class="infographic-host"></div>
+    <script>
+      (function() {
+        function mount() {
+          var host = document.getElementById('infographic-3');
+          if (!host) { return; }
+          if (host.shadowRoot) { return; }
+          try {
+            var shadow = host.attachShadow({mode: 'open'});
+            shadow.innerHTML = `
     <style>
       :host {
         display: block;
+        width: 100%;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; padding: 40px 48px; width: 1080px; color: #0f172a; }
+  .infographic-inner { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff;  max-width: 1080px; width: 100%; color: #0f172a; }
 
   .logo { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
   .logo-text { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; color: #0f172a; }
 
-  .top-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; margin-bottom: 20px; }
+  .top-layout { display: block; margin-bottom: 20px; }
   .hero-title { font-size: 42px; font-weight: 800; line-height: 1.1; color: #0f172a; margin-bottom: 12px; }
   .hero-sub { font-size: 13.5px; color: #64748b; line-height: 1.65; }
 
   .surfaces-row { display: grid; grid-template-columns: 1fr 140px 1fr; gap: 20px; align-items: stretch; }
-  .surface-card { border-radius: 16px; padding: 22px 24px; border: 1.5px solid; }
+  .surface-card {
+  padding: 22px 24px;
+   border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+   }
+   /* subtle lift */
+.surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .sc-chat { background: #faf5ff; border-color: #ddd6fe; border-style: dashed; }
   .sc-code { background: #f0fdf4; border-color: #bbf7d0; border-style: dashed; }
   .sc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
@@ -901,7 +2099,19 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 
   .committed-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0 10px; }
   .comm-arrows { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 12px; color: #94a3b8; }
-  .comm-box { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 12px; text-align: center; }
+  .comm-box {
+  background: #f1f5f9;
+  padding: 14px 12px;
+  text-align: center;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .comm-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .comm-icon { margin: 0 auto 6px; width: 32px; height: 32px; background: #e2e8f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
   .comm-icon svg { width: 16px; height: 16px; }
   .comm-title { font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 4px; }
@@ -915,14 +2125,28 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .sr-sub { font-size: 12px; color: #64748b; line-height: 1.5; }
 
   .file-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 16px; }
-  .file-item { background: #fff; border-radius: 10px; padding: 12px 14px; border: 1px solid #e2e8f0; }
+  .file-item { background: #fff; border-radius: 10px; padding: 12px 14px; border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .file-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .fi-icon { width: 26px; height: 26px; border-radius: 6px; background: #ede9fe; display: flex; align-items: center; justify-content: center; margin-bottom: 7px; }
   .fi-icon svg { width: 13px; height: 13px; }
   .fi-name { font-size: 12.5px; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
   .fi-desc { font-size: 11.5px; color: #64748b; line-height: 1.4; }
 
   .review-stations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 16px; }
-  .rs { border-radius: 8px; padding: 8px 12px; font-size: 12px; font-weight: 600; text-align: center; }
+  .rs { border-radius: 8px; padding: 16px; font-size: 16px; font-weight: 600; text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .rs:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .rs-purple { background: #ede9fe; color: #5b21b6; }
   .rs-teal { background: #d1fae5; color: #065f46; }
   .rs-both { background: #e0f2fe; color: #0c4a6e; }
@@ -930,7 +2154,15 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .rsl { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #64748b; }
   .rsld { width: 9px; height: 9px; border-radius: 2px; }
 
-  .gate-row { background: #0f172a; border-radius: 14px; padding: 18px 24px; margin-top: 30px; }
+  .gate-row { background: #0f172a; border-radius: 14px; padding: 18px 24px; margin-top: 30px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .gate-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .gate-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .gate-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .gate-icon svg { width: 16px; height: 16px; }
@@ -948,13 +2180,27 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .gf-pass-bot { color: #6ee7b7; opacity: 0.8; font-weight: 500; }
 
   .bottom-two { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-  .signal-panel { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 14px; padding: 18px 20px; display: flex; gap: 14px; }
+  .signal-panel { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 14px; padding: 18px 20px; display: flex; gap: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .signal-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .sp-icon { width: 44px; height: 44px; border-radius: 12px; background: #7c3aed; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .sp-icon svg { width: 22px; height: 22px; }
   .sp-title { font-size: 14px; font-weight: 800; color: #4c1d95; margin-bottom: 6px; }
   .sp-body { font-size: 12.5px; color: #5b21b6; line-height: 1.6; }
 
-  .why-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px 20px; }
+  .why-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .why-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .why-title { font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 12px; }
   .why-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .why-item { display: flex; flex-direction: column; gap: 5px; }
@@ -963,7 +2209,14 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .wi-title { font-size: 12px; font-weight: 700; color: #0f172a; }
   .wi-body { font-size: 11.5px; color: #64748b; line-height: 1.45; }
 
-  .footer { margin-top: 30px; background: #0f172a; border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .footer { margin-top: 30px; background: #0f172a; border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;}
+
+  .footer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
   .footer-left { display: flex; align-items: center; gap: 14px; }
   .footer-icon { width: 36px; height: 36px; border-radius: 9px; background: rgba(167,139,250,0.2); display: flex; align-items: center; justify-content: center; }
   .footer-icon svg { width: 18px; height: 18px; }
@@ -972,19 +2225,73 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   .leg { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: rgba(255,255,255,0.6); font-weight: 500; }
   .leg-dot { width: 9px; height: 9px; border-radius: 50%; }
 
+
+    /* Infographic 2 Signal responsive */
+    @media (max-width: 900px) {
+      /* Stack the Chat | Committed files | Code row vertically */
+      .surfaces-row {
+        display: block !important;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+      .surface-card {
+        display: block !important;
+        margin-bottom: 14px !important;
+      }
+      .committed-col {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+        margin: 0 0 14px 0 !important;
+      }
+      .comm-arrows { display: none !important; }
+      .comm-box { max-width: 100% !important; margin: 0 auto !important; }
+      /* File grid, review stations, why-items collapse to 2 columns */
+      .file-items, .review-stations, .why-items {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+      /* Bottom two-up (Signal + why) stacks */
+      .bottom-two {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .gate-flow { flex-wrap: wrap !important; gap: 6px !important; }
+    }
+    @media (max-width: 600px) {
+      .infographic-inner { padding: 0 !important; }
+      .surface-card { padding: 18px !important; }
+      .sc-name { font-size: 16px !important; }
+      .sc-item-text { font-size: 12px !important; }
+      .file-items, .review-stations, .why-items {
+        grid-template-columns: 1fr !important;
+      }
+      .gate-flow .gf-step, .gate-flow .gf-block, .gate-flow .gf-pass {
+        font-size: 11.5px !important;
+        padding: 6px 10px !important;
+      }
+      .footer {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+      }
+    }
+
+    /* RESPONSIVE OVERRIDES — injected for shadow DOM */
+    .infographic-inner { width: 100%; max-width: 100%; }
+    .infographic-inner > :first-child {
+      width: 100% !important;
+      max-max-width: 1080px; width: 100% !important;
+      padding: 24px 28px !important;
+    }
+
     </style>
-    <div class="infographic-inner">
-<div class="logo">
-  <svg width="28" height="22" viewBox="0 0 28 22" fill="none"><rect x="0" y="0" width="12" height="12" rx="2" fill="#1D9E75"/><rect x="16" y="0" width="12" height="5" rx="1.5" fill="#1D9E75" opacity="0.4"/><rect x="16" y="8" width="12" height="5" rx="1.5" fill="#1D9E75" opacity="0.4"/><rect x="0" y="16" width="12" height="5" rx="1.5" fill="#1D9E75" opacity="0.4"/></svg>
-  <span class="logo-text">FLOCKR</span>
-</div>
+    <div>
+
 
 <div class="top-layout">
-  <div>
-    <div class="hero-title">The closed loop</div>
-    <div class="hero-sub">Two Claude surfaces with separate authority, connected by committed files, closed by prompts that refuse to proceed if the system is out of sync.</div>
-  </div>
-
   <div class="surfaces-row">
     <div class="surface-card sc-chat">
       <div class="sc-header">
@@ -1067,7 +2374,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
   <div class="file-items">
     <div class="file-item">
       <div class="fi-icon"><svg viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="2" stroke="#7c3aed" stroke-width="1.2"/><line x1="3.5" y1="4.5" x2="9.5" y2="4.5" stroke="#7c3aed" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="7" x2="7" y2="7" stroke="#7c3aed" stroke-width="1.1" stroke-linecap="round"/></svg></div>
-      <div class="fi-name">CLAUDE.md</div>
+      <div class="fi-name">Architecture memory</div>
       <div class="fi-desc">The complete architectural context and system memory</div>
     </div>
     <div class="file-item">
@@ -1108,7 +2415,7 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
     <div class="rs rs-teal">Tech implementation</div>
     <div class="rs rs-teal">Data + schema</div>
     <div class="rs rs-purple">Visual UI</div>
-    <div class="rs rs-purple">Help text + InfoIcons</div>
+    <div class="rs rs-purple">Help text and explanations</div>
     <div class="rs rs-purple">Terminology</div>
     <div class="rs rs-both">Dev documentation</div>
     <div class="rs rs-both">Information architecture</div>
@@ -1191,58 +2498,83 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
 </div>
     </div>
   `;
-})();
-</script>
+          } catch(e) {
+            host.innerHTML = '<div style="padding: 24px; color: #7C3AED; font-family: sans-serif; text-align:center; font-size: 13px;">Infographic render error: ' + (e && e.message ? e.message : e) + '</div>';
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', mount);
+        } else {
+          mount();
+        }
+      })();
+    </script>
 
-  <div class="two-col">
-    <div>
-      <h3 class="teal">What makes this different</h3>
-      <p class="body"><strong>Separate authority.</strong> Claude Chat holds visual context &mdash; 29 portal screenshots, the IA document, the glossary, the sidebar content JSON. It catches visual inconsistency, terminology drift, and conceptual confusion. Claude Code holds the source code. It catches threshold drift, missing InfoIcons, stale eligibility matrices. Neither is asked to do the other&rsquo;s job.</p>
-      <p class="body"><strong>State in files, not conversation.</strong> Specs, changelogs, audit reports, rebuild logs, and the knowledge base are all committed files. Any session with either surface can be resumed or replaced without losing context.</p>
-    </div>
-    <div>
-      <h3 class="teal">The hard gate</h3>
-      <p class="body"><code>generate-knowledge-base.md</code> checks the audit report for unresolved conflicts before it runs. If any exist, it refuses to proceed. This single gate prevents Signal from ever giving answers grounded in stale documentation.</p>
-      <h3 class="teal">Real conflicts caught in production</h3>
-      <div class="conflicts">
-        <div class="conflict">Stale <code>// 1/8</code> comment in <code>flockr.js</code> &mdash; actual formula is <code>ceil(products / 6)</code></div>
-        <div class="conflict">MOST_VIEWED requiring <code>rank === 1</code> in code, while docs stated top-10</div>
-        <div class="conflict">Momentum eligibility on <code>cart_drawer</code>: N in <code>CLAUDE.md</code> but Y in Tier 1 source</div>
+    <div class="two-col">
+      <div>
+        <h3 class="teal">What makes this different</h3>
+        <p class="body"><strong>Separate authority.</strong> Claude Chat holds visual context &mdash; the portal screenshots, the information architecture, the glossary, and the sidebar content catalogue. It catches visual inconsistency, terminology drift, and conceptual confusion. Claude Code holds the source code. It catches threshold drift, missing explanations, stale eligibility rules. Neither is asked to do the other&rsquo;s job.</p>
+        <p class="body"><strong>State in files, not conversation.</strong> Specs, changelogs, audit reports, rebuild logs, and the knowledge base are all committed files. Any session with either surface can be resumed or replaced without losing context.</p>
+      </div>
+      <div>
+        <h3 class="teal">The hard gate</h3>
+        <p class="body">Before Signal&rsquo;s knowledge base can be regenerated, a standing prompt checks the audit report for unresolved conflicts. If any exist, generation refuses to proceed. This single gate prevents Signal from ever giving answers grounded in stale documentation.</p>
+        <h3 class="teal">Real conflicts caught in production</h3>
+        <div class="conflicts">
+          <div class="conflict">An out-of-date comment in the browser integration stated the message slot budget was <code>1/8</code>; the actual formula is <code>ceil(products / 6)</code>. Caught by audit.</div>
+          <div class="conflict">The &ldquo;most viewed&rdquo; badge rule required <code>rank === 1</code> in code, while documentation described it as top-10. Caught by audit.</div>
+          <div class="conflict">Momentum signal eligibility on the cart drawer was marked disabled in architecture memory but enabled in source code. Caught by audit.</div>
+        </div>
       </div>
     </div>
+    <div class="callout teal"><p>This is a transferable model. The mechanism &mdash; two surfaces with complementary context, bridged by committed files, gated by prompts &mdash; applies to any software project. The specific files and standing prompts would change; the governance structure would not.</p></div>
   </div>
-  <div class="callout teal"><p>This is a transferable model. The mechanism &mdash; two surfaces with complementary context, bridged by committed files, gated by prompts &mdash; applies to any software project. The specific files and standing prompts would change; the governance structure would not.</p></div>
 </div>
 
-<!-- ── C: KNOWLEDGE BASE ── -->
-<div class="doc-section">
-  <div class="section-label teal">C &nbsp;&middot;&nbsp; Signal&rsquo;s knowledge base</div>
-  <h2 class="section-title"><span class="lt">C</span> &middot; Signal&rsquo;s knowledge base &mdash; 17-file RAG system</h2>
-  <p class="intro">Signal answers questions by retrieving from a structured knowledge base generated by a 7-phase structured prompt and kept current by the audit cycle.</p>
-  <table class="dtable">
-    <thead><tr><th>Phase</th><th>Output</th></tr></thead>
-    <tbody>
-      <tr><td><strong>1 &mdash; Source study</strong></td><td>Complete Tier 1 extraction: eligibility matrix (11 families &times; 8 surfaces), threshold values, scoring formula, all 13 pipeline steps, message codes, Athena views, Glue schema, tag behaviour</td></tr>
-      <tr><td><strong>2&ndash;3 &mdash; Core concepts + portal pages</strong></td><td>Overview, navigation, and all 7 portal pages verified against screenshots</td></tr>
-      <tr><td><strong>4 &mdash; System mechanics</strong></td><td>Signal family reference, eligibility matrix, selection engine with elimination reason codes, full message code catalogue</td></tr>
-      <tr><td><strong>5 &mdash; Data and attribution</strong></td><td>6-tier exposure model, demand intelligence layer, complete data layer with event types, join keys, and two documented analytics gap fixes</td></tr>
-      <tr><td><strong>6 &mdash; Config and troubleshooting</strong></td><td>Pipeline config reference, 12 structured troubleshooting topics</td></tr>
-      <tr><td><strong>7 &mdash; Glossary, index, source notes</strong></td><td>Full term glossary, chunk index, permanent conflict log for future regeneration</td></tr>
-    </tbody>
-  </table>
+<!-- ──KNOWLEDGE BASE ── -->
+<div class="doc-section" id="sec-c">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Knowledge base</span> &mdash; automated content generation from source</h2>
+    <p class="intro">Signal answers questions by retrieving from a structured knowledge base. Every chunk is written by Claude directly from the project&rsquo;s source-authority tiers &mdash; not hand-authored &mdash; and regenerated whenever the audit cycle passes clean. This guarantees the knowledge base stays synchronised with the running system indefinitely.</p>
+
+    <div class="callout teal">
+      <p><strong>How the knowledge base is generated</strong><br>
+      A standing prompt instructs Claude to study the source code, schemas, and portal UI, then write the knowledge base as a series of self-contained, query-optimised chunks. The prompt enforces a four-tier source authority (source code &rarr; written documentation &rarr; structural indices &rarr; visual verification) and refuses to run if the audit report contains unresolved conflicts. Every value, threshold, formula, and rule in the knowledge base is traceable to a Tier 1 source. When the system changes, regeneration is a single command &mdash; there is no drift period where Signal gives outdated answers.</p>
+    </div>
+
+    <h3 class="teal" style="margin-top:28px;">What Signal knows</h3>
+    <p class="body">The knowledge base is organised into 18 files covering every topic an operator could ask about. Content is structured for retrieval: each H2 heading echoes the likely question, and each chunk is written to stand alone so the retrieval system can surface the right answer without needing surrounding context.</p>
+
+    <table class="dtable dtable-stack">
+      <thead><tr><th>Topic area</th><th>What Signal can answer</th></tr></thead>
+      <tbody>
+      <tr><td><strong>What Flockr is</strong></td><td>Positioning, how Flockr connects to a store, data mode vs live mode, why demand signals influence conversion</td></tr>
+      <tr><td><strong>Portal navigation and pages</strong></td><td>What every page shows, every KPI card, every chart, every tab &mdash; across Home, Demand, Analytics, Conversion, Messages, Realtime, and Settings</td></tr>
+      <tr><td><strong>Signal families and eligibility</strong></td><td>All 11 signal families, the complete eligibility matrix (11 families &times; 8 surfaces), timeframe restrictions, lifecycle states, suppression rules, why a product might have no qualifying signal</td></tr>
+      <tr><td><strong>Selection engine and scoring</strong></td><td>All 13 pipeline steps, the full scoring formula with every weight, slot allocation logic, elimination reason codes, the coverage funnel</td></tr>
+      <tr><td><strong>Message system</strong></td><td>Every message code Flockr produces, surfaces and placements, slot budget, message variants, breakpoints, rank badge logic</td></tr>
+      <tr><td><strong>Attribution and conversion</strong></td><td>The exposure tier model, conversion rate lift methodology, incremental revenue calculation, the dose-response chart</td></tr>
+      <tr><td><strong>Demand intelligence</strong></td><td>Lifecycle classification, momentum calculation, scarcity and overstock detection, live demand events, category rankings</td></tr>
+      <tr><td><strong>Data layer</strong></td><td>End-to-end pipeline, every event type, the analytics views, join keys, the difference between data mode and live mode field-by-field</td></tr>
+      <tr><td><strong>Pipeline configuration</strong></td><td>Surfaces and placements, eligibility, thresholds, scoring weights, client modes</td></tr>
+      <tr><td><strong>Troubleshooting</strong></td><td>Twelve structured diagnostic topics &mdash; why activation rate is low, why a product isn&rsquo;t messaged, why lift isn&rsquo;t showing, how to verify Flockr is working</td></tr>
+      <tr><td><strong>Glossary</strong></td><td>Every term used anywhere in the portal, with canonical definitions &mdash; ~130 entries</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<!-- ── D: ACTION LAYER ── -->
-<div class="doc-section">
-  <div class="section-label teal">D &nbsp;&middot;&nbsp; Action Layer &nbsp;<span class="badge teal">In production</span></div>
-  <h2 class="section-title"><span class="lt">D</span> &middot; Action Layer &mdash; demand intelligence to commercial decision</h2>
-  <p class="intro">The Action Layer surfaces a single recommended action per product across four areas of the Demand page: Scarcity risk table, Fading tab, Momentum leaderboard, and the Live demand event feed (HIGH and CRITICAL events only).</p>
-  <div class="two-col">
-    <div>
-      <h3>Eight actions and their inputs</h3>
-      <table class="dtable">
-        <thead><tr><th>Action</th><th>Urgency</th><th>Derives from</th></tr></thead>
-        <tbody>
+<!-- ── ACTION LAYER ── -->
+<div class="doc-section" id="sec-d">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Action Layer</span> &mdash; demand intelligence to commercial decision</h2>
+    <p class="intro">The Action Layer surfaces a single recommended action per product across four areas of the Demand page: Scarcity risk table, Fading tab, Momentum leaderboard, and the Live demand event feed (HIGH and CRITICAL events only).</p>
+    <div class="two-col">
+      <div>
+        <h3>Eight actions and their inputs</h3>
+        <table class="dtable dtable-stack">
+          <thead><tr><th>Action</th><th>Urgency</th><th>Derives from</th></tr></thead>
+          <tbody>
           <tr><td><strong>Restock immediately</strong></td><td class="uc">Critical</td><td>Runway &lt;5 days, demand Accelerating or Stable</td></tr>
           <tr><td><strong>Restock soon</strong></td><td class="uh">High</td><td>Runway 5&ndash;14 days, demand Accelerating or Stable</td></tr>
           <tr><td><strong>Feature now</strong></td><td class="uh">High</td><td>3H + 7D momentum elevated, or top-3 category entry</td></tr>
@@ -1251,562 +2583,205 @@ ul.blist li strong { color: var(--slate-900); font-weight: 600; }
           <tr><td><strong>Monitor</strong></td><td class="um">Medium</td><td>Short runway, fading demand</td></tr>
           <tr><td><strong>Watch</strong></td><td class="ul">Low</td><td>Single-grain momentum (3H only)</td></tr>
           <tr><td><strong>Consider markdown</strong></td><td class="ul">Low&ndash;Med</td><td>Views, ATB, purchases declining 7+ days</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <h3>Classification logic</h3>
-      <ul class="blist">
-        <li><strong>Scarcity risk</strong> &mdash; two inputs: runway bucket &times; 3-day demand trend.</li>
-        <li><strong>Fading demand</strong> &mdash; decline magnitude, purchase trend (Holding / Declining / Collapsed), days declining. Lifecycle modifier: a Discovering product with collapsed purchase shows Investigate not Consider markdown.</li>
-        <li><strong>Momentum leaderboard</strong> &mdash; 3H and 7D grains. Compound note &ldquo;Low stock &mdash; act urgently&rdquo; when Feature now product has active scarcity.</li>
-        <li><strong>Live demand feed</strong> &mdash; Feature now on lifecycle breakout; Restock immediately on accelerating low stock; Investigate on rank exit.</li>
-      </ul>
-      <p class="body" style="margin-top:14px;">When a product row is expanded, the action appears with a one-sentence explanation: <em>&ldquo;Promote &mdash; views have declined 47% since peak but purchase rate is holding.&rdquo;</em> Generated from classification inputs, not a fixed string.</p>
-      <p class="body">Signal explains any classification and helps communicate decisions to the team. See Section H.</p>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Classification logic</h3>
+        <ul class="blist">
+          <li><strong>Scarcity risk</strong> &mdash; two inputs: runway bucket &times; 3-day demand trend.</li>
+          <li><strong>Fading demand</strong> &mdash; decline magnitude, purchase trend (Holding / Declining / Collapsed), days declining. Lifecycle modifier: a Discovering product with collapsed purchase shows Investigate not Consider markdown.</li>
+          <li><strong>Momentum leaderboard</strong> &mdash; 3H and 7D grains. Compound note &ldquo;Low stock &mdash; act urgently&rdquo; when Feature now product has active scarcity.</li>
+          <li><strong>Live demand feed</strong> &mdash; Feature now on lifecycle breakout; Restock immediately on accelerating low stock; Investigate on rank exit.</li>
+        </ul>
+        <p class="body" style="margin-top:14px;">When a product row is expanded, the action appears with a one-sentence explanation: <em>&ldquo;Promote &mdash; views have declined 47% since peak but purchase rate is holding.&rdquo;</em> Generated from classification inputs, not a fixed string.</p>
+        <p class="body">Signal explains any classification and helps communicate decisions to the team. See Section H.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ── E: ADAPTIVE SCORING ── -->
-<div class="doc-section">
-  <div class="section-label teal">E &nbsp;&middot;&nbsp; Adaptive scoring &nbsp;<span class="badge teal">In production</span></div>
-  <h2 class="section-title"><span class="lt">E</span> &middot; Adaptive scoring &mdash; self-optimising signal selection</h2>
-  <p class="intro">The scoring model learns continuously from each client&rsquo;s own conversion data. Five dimensions are optimised simultaneously without manual configuration.</p>
-  <div class="two-col">
-    <ul class="blist">
-      <li><strong>Adaptive timeframe selection</strong> &mdash; learns which time windows convert per signal family per surface. If hour12 and hour1 purchase signals convert at the same rate, the penalty for the longer window is reduced.</li>
-      <li><strong>Signal weight optimisation</strong> &mdash; per-client, per-surface weight distributions adjust from observed conversion data. Compounds over time.</li>
-      <li><strong>Placement tuning</strong> &mdash; learns which families perform better in primary versus secondary position on PDP.</li>
-    </ul>
-    <ul class="blist">
-      <li><strong>Journey-stage weighting</strong> &mdash; cart pressure and scarcity gain weight at the decided stage. Newness signals lose weight as shoppers progress from browsing to considering.</li>
-      <li><strong>Cross-surface orchestration</strong> &mdash; session context via <code>session_id</code> informs weight adjustments within a session. A signal family seen and not acted on twice is weighted down on subsequent pages.</li>
-    </ul>
+<!-- ── ADAPTIVE SCORING ── -->
+<div class="doc-section" id="sec-e">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Adaptive scoring</span> &mdash; self-optimising signal selection</h2>
+    <p class="intro">The scoring model learns continuously from each client&rsquo;s own conversion data. Five dimensions are optimised simultaneously without manual configuration.</p>
+    <div class="two-col">
+      <ul class="blist">
+        <li><strong>Adaptive timeframe selection</strong> &mdash; learns which time windows convert per signal family per surface. If hour12 and hour1 purchase signals convert at the same rate, the penalty for the longer window is reduced.</li>
+        <li><strong>Signal weight optimisation</strong> &mdash; per-client, per-surface weight distributions adjust from observed conversion data. Compounds over time.</li>
+        <li><strong>Placement tuning</strong> &mdash; learns which families perform better in primary versus secondary position on PDP.</li>
+      </ul>
+      <ul class="blist">
+        <li><strong>Journey-stage weighting</strong> &mdash; cart pressure and scarcity gain weight at the decided stage. Newness signals lose weight as shoppers progress from browsing to considering.</li>
+        <li><strong>Cross-surface orchestration</strong> &mdash; session context via <code>session_id</code> informs weight adjustments within a session. A signal family seen and not acted on twice is weighted down on subsequent pages.</li>
+      </ul>
+    </div>
+    <div class="callout teal"><p>The adaptive model is treated as a Tier 1 source. Weight changes above a defined threshold surface as conflicts in the audit cycle &mdash; Signal&rsquo;s knowledge of scoring behaviour stays current automatically as the model learns.</p></div>
   </div>
-  <div class="callout teal"><p>The adaptive model is treated as a Tier 1 source. Weight changes above a defined threshold surface as conflicts in the audit cycle &mdash; Signal&rsquo;s knowledge of scoring behaviour stays current automatically as the model learns.</p></div>
 </div>
 
 <!-- ── F: EXTENSIBILITY ── -->
-<div class="doc-section">
-  <div class="section-label teal">F &nbsp;&middot;&nbsp; Extensibility</div>
-  <h2 class="section-title"><span class="lt">F</span> &middot; Extensibility &mdash; the pattern beyond e-commerce</h2>
-  <p class="intro">The architecture is not catalogue-specific. The core pattern applies wherever there are items to surface and decisions to influence.</p>
-  <div class="two-col">
-    <div>
-      <h3>Concept translation to a CMS context</h3>
-      <table class="dtable">
-        <thead><tr><th>Flockr concept</th><th>CMS equivalent</th></tr></thead>
-        <tbody>
+<div class="doc-section" id="sec-f">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Extensibility</span> &mdash; the pattern beyond e-commerce</h2>
+    <p class="intro">The architecture is not catalogue-specific. The core pattern applies wherever there are items to surface and decisions to influence.</p>
+    <div class="two-col">
+      <div>
+        <h3>Concept translation to a CMS context</h3>
+        <table class="dtable dtable-stack">
+          <thead><tr><th>Flockr concept</th><th>CMS equivalent</th></tr></thead>
+          <tbody>
           <tr><td><strong>Product</strong></td><td>Any managed content item &mdash; article, page, asset</td></tr>
           <tr><td><strong>Purchase / attention signal</strong></td><td>Read completion, scroll depth, click-through, share</td></tr>
           <tr><td><strong>Surface</strong></td><td>Article feed, related content panel, search, email digest</td></tr>
           <tr><td><strong>Slot</strong></td><td>Position in a feed, recommendation slot, featured block</td></tr>
           <tr><td><strong>Conversion</strong></td><td>Time on site, subscription, download, form completion</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <h3>What transfers without modification</h3>
-      <p class="body">The scoring formula and its seven dimensions, the slot allocation model, the exposure-tier attribution methodology, and the governance approach are all directly transferable. The signal taxonomy and surface definitions are the variables; the system architecture is the invariant.</p>
-      <h3>The closed-loop model is also portable</h3>
-      <p class="body">CLAUDE.md working memory, tiered source authority, audit-and-rebuild cycle, and automated compliance checks are applicable to any software project. A CMS engineering team could adopt the same structure with CMS-specific architecture in CLAUDE.md.</p>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>What transfers without modification</h3>
+        <p class="body">The scoring formula and its seven dimensions, the slot allocation model, the exposure-tier attribution methodology, and the governance approach are all directly transferable. The signal taxonomy and surface definitions are the variables; the system architecture is the invariant.</p>
+        <h3>The closed-loop model is also portable</h3>
+        <p class="body">Architecture memory, tiered source authority, audit-and-rebuild cycle, and automated compliance checks are applicable to any software project. A CMS engineering team could adopt the same structure with their own domain-specific architecture memory.</p>
+      </div>
     </div>
   </div>
 </div>
 
 
 <!-- ── STRATEGIC VALUE ── -->
-<div class="doc-section">
-  <div class="section-label teal">Strategic value</div>
-  <h2 class="section-title">Why this system matters</h2>
-  <p class="intro">This operating model directly impacts scalability, defensibility, and product differentiation.</p>
-  <div class="three-col">
-    <div class="card card-accent-teal">
-      <h3>Scalable integration model</h3>
-      <p class="body">Client onboarding scales without proportional engineering cost. What required days of front-end work is now a single AI session — repeatable across any Shopify storefront.</p>
-    </div>
-    <div class="card card-accent-teal">
-      <h3>Persistent system knowledge</h3>
-      <p class="body">System knowledge persists beyond individuals. CLAUDE.md, the audit cycle, and committed artefacts mean the codebase and its documentation stay coherent regardless of team changes.</p>
-    </div>
-    <div class="card card-accent-purple">
-      <h3>Product differentiation</h3>
-      <p class="body">Signal transforms a reporting tool into a conversational intelligence layer. No competitor offers an operator-facing AI assistant grounded in live behavioural data, account configuration, and verified system knowledge simultaneously.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ── H: SIGNAL ── -->
-<div class="doc-section">
-  <div class="section-label purple">H &nbsp;&middot;&nbsp; Signal &nbsp;<span class="badge purple">In production</span></div>
-  <div class="dark-panel">
-    <h2>H &middot; Signal &mdash; the AI assistant embedded in the portal</h2>
-    <div class="dp-meta">
-      <span><span class="dp-dot" style="background:#1D9E75;"></span>Claude API</span>
-      <span><span class="dp-dot" style="background:#7C3AED;"></span>Three knowledge layers</span>
-      <span><span class="dp-dot" style="background:#0284C7;"></span>Persistent across every page</span>
-      <span><span class="dp-dot" style="background:#D97706;"></span>Source-attributed answers</span>
-    </div>
-  </div>
-  <p class="intro">Signal is the stand-out capability of the Flockr platform. Where the rest of Flockr automates signal evaluation, message selection, and attribution measurement, Signal makes all of it conversational. It is the interface through which a commercial team &mdash; not just a data analyst &mdash; can engage with demand intelligence, act on it, understand it, and explain it.</p>
-  <p class="body">Every answer is grounded in three layers of knowledge: how Flockr works, the live state of the specific account, and the account&rsquo;s actual data. Accessible from every page via a persistent panel that does not reset when navigating.</p>
-
-  <div id="infographic-2" class="infographic-host"></div>
-<script>
-(function() {
-  var host = document.getElementById('infographic-2');
-  var shadow = host.attachShadow({mode: 'open'});
-  shadow.innerHTML = `
-    <style>
-      :host { display: block; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #fff;
-    padding: 40px 48px;
-    width: 1080px;
-    color: #0f172a;
-  }
-
-  .logo { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
-  .logo-text { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; color: #0f172a; }
-
-  .hero { margin-bottom: 28px; }
-  .hero-title { font-size: 52px; font-weight: 800; line-height: 1.05; color: #0f172a; margin-bottom: 6px; }
-  .hero-sub-label { font-size: 16px; font-weight: 700; color: #7c3aed; margin-bottom: 8px; }
-  .hero-sub { font-size: 14px; color: #64748b; line-height: 1.65; max-width: 420px; }
-
-  /* ── Main three-column layout ── */
-  .main {
-    display: table;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-bottom: 20px;
-  }
-
-  /* Left col: knowledge cards stacked */
-  .col-left {
-    display: table-cell;
-    width: 30%;
-    vertical-align: middle;
-    padding-right: 0;
-  }
-  .kstack { display: flex; flex-direction: column; gap: 10px; }
-  .kcard {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 12px;
-    padding: 14px 16px;
-  }
-  .kc-hdr { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
-  .kc-icon { width: 30px; height: 30px; border-radius: 8px; background: #d1fae5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .kc-icon svg { width: 15px; height: 15px; }
-  .kc-title { font-size: 12.5px; font-weight: 700; color: #064e3b; }
-  .kc-body { font-size: 12px; color: #065f46; line-height: 1.55; }
-
-  /* Left arrow col */
-  .col-arr-l {
-    display: table-cell;
-    width: 56px;
-    vertical-align: middle;
-    text-align: center;
-    padding: 0 4px;
-  }
-
-  /* Centre: Signal */
-  .col-mid {
-    display: table-cell;
-    width: 190px;
-    vertical-align: middle;
-  }
-  .signal-box {
-    background: #7c3aed;
-    border-radius: 20px;
-    padding: 28px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-  }
-  .signal-avatar {
-    width: 54px; height: 54px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .signal-avatar svg { width: 28px; height: 28px; }
-  .signal-name { font-size: 20px; font-weight: 800; color: #fff; }
-  .signal-desc { font-size: 11.5px; color: rgba(255,255,255,0.7); line-height: 1.55; }
-
-  /* Right arrow col */
-  .col-arr-r {
-    display: table-cell;
-    width: 56px;
-    vertical-align: middle;
-    text-align: center;
-    padding: 0 4px;
-  }
-
-  /* Right col: domain cards stacked */
-  .col-right {
-    display: table-cell;
-    vertical-align: middle;
-    padding-left: 0;
-    width:30%;
-  }
-  .dstack { display: flex; flex-direction: column; gap: 10px; }
-  .dcard {
-    background: #f5f3ff;
-    border: 1px solid #ddd6fe;
-    border-radius: 12px;
-    padding: 14px 16px;
-  }
-  .dc-hdr { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
-  .dc-icon { width: 28px; height: 28px; border-radius: 7px; background: #ede9fe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .dc-icon svg { width: 14px; height: 14px; }
-  .dc-title { font-size: 12.5px; font-weight: 700; color: #3730a3; }
-  .dc-qs { display: flex; flex-direction: column; gap: 3px; }
-  .dc-q { font-size: 12px; color: #4c1d95; padding-left: 9px; border-left: 2px solid #c4b5fd; line-height: 1.5; }
-
-  /* Arrow helpers */
-  .arr-stack { display: flex; flex-direction: column; gap: 0; align-items: center; justify-content: center; height: 100%; }
-  .arr-row { display: flex; align-items: center; width: 48px; margin: 14px 0; }
-  .arr-row-dash {
-    flex: 1;
-    height: 1.5px;
-    background: repeating-linear-gradient(to right, #a78bfa 0, #a78bfa 5px, transparent 5px, transparent 10px);
-  }
-  .arr-head { font-size: 15px; color: #a78bfa; line-height: 1; flex-shrink: 0; }
-
-  /* ── Bottom two-column ── */
-  .bottom {
-    display: table;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 12px 0;
-  }
-  .bottom-left { display: table-cell; width: 50%; vertical-align: top; }
-  .bottom-right { display: table-cell; width: 50%; vertical-align: top; }
-
-  .examples-box {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 14px;
-    padding: 18px 20px;
-    height: 100%;
-  }
-  .ex-title { font-size: 11px; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-  .ex-q { font-size: 12.5px; color: #4c1d95; line-height: 1.55; font-style: italic; border-left: 2px solid #a78bfa; padding-left: 10px; margin-bottom: 9px; }
-
-  .limits-box {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 18px 20px;
-    height: 100%;
-  }
-  .limits-title { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-  .limit { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
-  .limit-dot { width: 6px; height: 6px; border-radius: 50%; background: #94a3b8; margin-top: 5px; flex-shrink: 0; }
-  .limit-text { font-size: 12.5px; color: #475569; line-height: 1.5; }
-  .limit-text b { color: #0f172a; font-weight: 600; }
-
-  .footer {
-    margin-top: 18px;
-    background: #0f172a;
-    border-radius: 14px;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .footer-left { display: flex; align-items: center; gap: 14px; }
-  .footer-icon { width: 36px; height: 36px; border-radius: 9px; background: rgba(124,58,237,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .footer-icon svg { width: 18px; height: 18px; }
-  .footer-tagline { font-size: 14px; font-weight: 700; color: #fff; }
-  .footer-legend { display: flex; gap: 16px; white-space: nowrap; }
-  .leg { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: rgba(255,255,255,0.6); font-weight: 500; }
-  .leg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-
-    </style>
-    <div class="infographic-inner">
-<div class="logo">
-  <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
-    <rect x="0" y="0" width="12" height="12" rx="2" fill="#1D9E75"/>
-    <rect x="16" y="0" width="12" height="5" rx="1.5" fill="#1D9E75" opacity="0.4"/>
-    <rect x="16" y="8" width="12" height="5" rx="1.5" fill="#1D9E75" opacity="0.4"/>
-    <rect x="0" y="16" width="12" height="5" rx="1.5" fill="#1D9E75" opacity="0.4"/>
-  </svg>
-  <span class="logo-text">FLOCKR</span>
-</div>
-
-<div class="hero">
-  <div class="hero-title">Signal</div>
-  <div class="hero-sub-label">Your AI assistant</div>
-  <div class="hero-sub">Every answer grounded in how Flockr works, your account setup, and your live store data. Ask anything. Get a real answer, in plain language, in seconds.</div>
-</div>
-
-<!-- Main three-column: knowledge | arrows | Signal | arrows | domains -->
-<table class="main">
-  <tr>
-
-    <!-- Left: knowledge cards stacked -->
-    <td class="col-left">
-      <div class="kstack">
-        <div class="kcard">
-          <div class="kc-hdr">
-            <div class="kc-icon">
-              <svg viewBox="0 0 17 17" fill="none"><path d="M2 3h10a1.5 1.5 0 011.5 1.5v7A1.5 1.5 0 0112 13H5.5L2 16V4.5A1.5 1.5 0 013.5 3H2z" stroke="#065f46" stroke-width="1.4" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="kc-title">System knowledge</div>
-          </div>
-          <div class="kc-body">Every rule, every metric, every formula — sourced directly from Flockr's code and verified every cycle.</div>
-        </div>
-        <div class="kcard">
-          <div class="kc-hdr">
-            <div class="kc-icon">
-              <svg viewBox="0 0 17 17" fill="none"><rect x="2" y="2" width="13" height="13" rx="2.5" stroke="#065f46" stroke-width="1.4"/><line x1="4.5" y1="5.5" x2="12.5" y2="5.5" stroke="#065f46" stroke-width="1.3" stroke-linecap="round"/><line x1="4.5" y1="8.5" x2="9.5" y2="8.5" stroke="#065f46" stroke-width="1.3" stroke-linecap="round"/><line x1="4.5" y1="11.5" x2="11" y2="11.5" stroke="#065f46" stroke-width="1.3" stroke-linecap="round"/></svg>
-            </div>
-            <div class="kc-title">Your configuration</div>
-          </div>
-          <div class="kc-body">Active surfaces, display variants, thresholds, pipeline overrides — your account, specifically.</div>
-        </div>
-        <div class="kcard">
-          <div class="kc-hdr">
-            <div class="kc-icon">
-              <svg viewBox="0 0 17 17" fill="none"><polyline points="1.5,12.5 4.5,7.5 7.5,10 10.5,5 13.5,8 15.5,5.5" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15.5" cy="5.5" r="1.4" fill="#065f46" opacity="0.6"/></svg>
-            </div>
-            <div class="kc-title">Live data</div>
-          </div>
-          <div class="kc-body">Real figures from your store, right now — activation rates, attribution, pipeline traces on demand.</div>
-        </div>
+<div class="doc-section" id="sec-strategic">
+  <div class="doc-section-inner">
+    <h2 class="section-title"><span class="lt">Strategic value</span> &mdash; Why this system matters</h2>
+    <p class="intro">This operating model directly impacts scalability, defensibility, and product differentiation.</p>
+    <div class="three-col">
+      <div class="card card-accent-teal">
+        <h3>Scalable integration model</h3>
+        <p class="body">Client onboarding scales without proportional engineering cost. What required days of front-end work is now a single AI session — repeatable across any Shopify storefront.</p>
       </div>
-    </td>
-
-    <!-- Left arrows -->
-    <td class="col-arr-l">
-      <div class="arr-stack">
-        <div class="arr-row"><div class="arr-row-dash"></div><div class="arr-head">→</div></div>
-        <div class="arr-row"><div class="arr-row-dash"></div><div class="arr-head">→</div></div>
-        <div class="arr-row"><div class="arr-row-dash"></div><div class="arr-head">→</div></div>
+      <div class="card card-accent-teal">
+        <h3>Persistent system knowledge</h3>
+        <p class="body">System knowledge persists beyond individuals. Architecture memory, the audit cycle, and committed artefacts mean the codebase and its documentation stay coherent regardless of team changes.</p>
       </div>
-    </td>
-
-    <!-- Signal centre -->
-    <td class="col-mid">
-      <div class="signal-box">
-        <div class="signal-avatar">
-          <svg viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="9" r="4.5" stroke="white" stroke-width="1.7"/>
-            <path d="M4 25c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="signal-name">Signal</div>
-        <div class="signal-desc">Persistent on every page<br>Source-attributed answers</div>
-      </div>
-    </td>
-
-    <!-- Right arrows -->
-    <td class="col-arr-r">
-      <div class="arr-stack">
-        <div class="arr-row"><div class="arr-head">→</div><div class="arr-row-dash"></div></div>
-        <div class="arr-row"><div class="arr-head">→</div><div class="arr-row-dash"></div></div>
-        <div class="arr-row"><div class="arr-head">→</div><div class="arr-row-dash"></div></div>
-      </div>
-    </td>
-
-    <!-- Right: domain cards stacked -->
-    <td class="col-right">
-      <div class="dstack">
-        <div class="dcard">
-          <div class="dc-hdr">
-            <div class="dc-icon">
-              <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#4c1d95" stroke-width="1.3"/><path d="M5.5 6c0-1.1.9-2 1.5-2s1.5.9 1.5 2c0 .9-.9 1.4-1.5 1.7" stroke="#4c1d95" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="10.5" r="0.7" fill="#4c1d95"/></svg>
-            </div>
-            <div class="dc-title">Demand intelligence</div>
-          </div>
-          <div class="dc-qs">
-            <div class="dc-q">Why isn't this product being messaged?</div>
-            <div class="dc-q">Which products need attention right now?</div>
-            <div class="dc-q">Where are my coverage gaps?</div>
-          </div>
-        </div>
-        <div class="dcard">
-          <div class="dc-hdr">
-            <div class="dc-icon">
-              <svg viewBox="0 0 14 14" fill="none"><path d="M2 11l3-3 2.5 2.5 4-5.5" stroke="#4c1d95" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 5.5h2.5V3" stroke="#4c1d95" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="dc-title">Action Layer</div>
-          </div>
-          <div class="dc-qs">
-            <div class="dc-q">Why did this action fire?</div>
-            <div class="dc-q">Is this markdown right for us?</div>
-            <div class="dc-q">Write a restock brief for the team.</div>
-          </div>
-        </div>
-        <div class="dcard">
-          <div class="dc-hdr">
-            <div class="dc-icon">
-              <svg viewBox="0 0 14 14" fill="none"><path d="M1.5 10Q3.5 5.5 5.5 7.5Q7.5 9.5 9.5 4Q11 1.5 12.5 3.5" stroke="#4c1d95" stroke-width="1.4" stroke-linecap="round"/><circle cx="12.5" cy="3.5" r="1.3" fill="#4c1d95" opacity="0.5"/></svg>
-            </div>
-            <div class="dc-title">Adaptive model</div>
-          </div>
-          <div class="dc-qs">
-            <div class="dc-q">Why is scarcity dominating PDP lately?</div>
-            <div class="dc-q">What has the model learned about our store?</div>
-            <div class="dc-q">Is our signal mix working as expected?</div>
-          </div>
-        </div>
-      </div>
-    </td>
-
-  </tr>
-</table>
-
-<!-- Bottom two columns -->
-<table class="bottom">
-  <tr>
-    <td class="bottom-left">
-      <div class="examples-box">
-        <div class="ex-title">Signal in action</div>
-        <div class="ex-q">"448 products at scarcity risk — 19 are high priority and still showing active demand."</div>
-        <div class="ex-q">"Your conversion lift for the last 14 days is +29%. Tier 5 (cart visible) is running at 2.1×."</div>
-        <div class="ex-q">"No signal family is qualifying — that product won't appear until demand recovers."</div>
-        <div class="ex-q" style="margin-bottom:0;">"The adaptive model has learned scarcity converts better on PDP. Here's the CTR data."</div>
-      </div>
-    </td>
-    <td class="bottom-right">
-      <div class="limits-box">
-        <div class="limits-title">What Signal does not do</div>
-        <div class="limit"><div class="limit-dot"></div><div class="limit-text"><b>No config changes</b> — explains trade-offs, but changes happen in the portal</div></div>
-        <div class="limit"><div class="limit-dot"></div><div class="limit-text"><b>No action execution</b> — helps evaluate and communicate, but decisions stay with the operator</div></div>
-        <div class="limit"><div class="limit-dot"></div><div class="limit-text"><b>No external access</b> — works only within Flockr's data and configuration</div></div>
-        <div class="limit" style="margin-bottom:0;"><div class="limit-dot"></div><div class="limit-text"><b>No speculation</b> — says so clearly when something is outside its context</div></div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-<!-- Footer -->
-<div class="footer">
-  <div class="footer-left">
-    <div class="footer-icon">
-      <svg viewBox="0 0 18 18" fill="none"><path d="M9 2l2 4.5 5 .7-3.5 3.4.8 4.9L9 13l-4.3 2.5.8-4.9L2 7.2l5-.7z" stroke="#a78bfa" stroke-width="1.5" stroke-linejoin="round"/></svg>
-    </div>
-    <div class="footer-tagline">Decisions stay with the operator. Signal makes them faster, better-informed, and easier to act on.</div>
-  </div>
-  <div class="footer-legend">
-    <div class="leg"><div class="leg-dot" style="background:#1D9E75;"></div>Knowledge layers</div>
-    <div class="leg"><div class="leg-dot" style="background:#7c3aed;"></div>Signal</div>
-    <div class="leg"><div class="leg-dot" style="background:#4c1d95;"></div>Query domains</div>
-  </div>
-</div>
-    </div>
-  `;
-})();
-</script>
-
-  <div class="section-label purple" style="margin-top:32px;">H1 &nbsp;&middot;&nbsp; Three knowledge layers</div>
-  <div class="three-col">
-    <div>
-      <h3 class="teal">Layer 1 &mdash; how Flockr works</h3>
-      <p class="body">Complete knowledge of every concept, metric, and feature &mdash; sourced from the 17-file RAG knowledge base built directly from source code. Signal can explain the exposure tier attribution model, why attention signals are ineligible on the cart drawer, what a momentum BREAKOUT state means, or how the slot budget is calculated.</p>
-    </div>
-    <div>
-      <h3 class="teal">Layer 2 &mdash; your configuration</h3>
-      <p class="body">Signal knows the specific account&rsquo;s setup: which surfaces are active, which display variants are configured, whether any pipeline overrides are in place, and what mode the account is running. Answers are account-specific, not generic.</p>
-    </div>
-    <div>
-      <h3 class="teal">Layer 3 &mdash; your live data</h3>
-      <p class="body">Signal queries the account&rsquo;s analytics directly &mdash; returning the conversion rate lift over a date range, which signal families are firing most, or tracing any product through the pipeline to the exact elimination point and reason code.</p>
-    </div>
-  </div>
-
-  <div class="section-label purple" style="margin-top:36px;">H2 &nbsp;&middot;&nbsp; Signal in practice</div>
-  <div class="two-col">
-    <div>
-      <h3 class="purple">Understanding a metric</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> What does demand coverage mean?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>Demand coverage is the percentage of products evaluated by Flockr that had at least one qualifying signal. If Flockr evaluated 4,200 products and 3,948 had at least one qualifying signal, demand coverage would be 94%. A low figure typically means either signal data is sparse or thresholds are set higher than your traffic volume supports.</em></div>
-      </div>
-      <h3 class="purple">Why a product isn&rsquo;t being messaged</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> Why isn&rsquo;t the Logo Hoody Black getting any messages?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>The Logo Hoody Black has fading demand &mdash; views down 15% since peak and no purchases in the last 7 days. Purchase not qualifying (22 views in last 24h, zero purchases); Momentum below threshold (ratio 0.36&times;); Attention: 0 views in last hour &mdash; below minimum of 5 for hour1. No signal family is meeting its minimum threshold. Flockr doesn&rsquo;t fabricate urgency when no genuine signal exists.</em></div>
-      </div>
-      <h3 class="purple">Live attribution data</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> What was our conversion rate lift over the last 14 days?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>Your conversion rate lift for the last 14 days is +29%. Flockr session order rate was 1.2% versus a baseline of 0.9%. Your tier 5 (cart visible) sessions are showing the strongest lift at approximately 2.1&times;, consistent with the dose-response pattern if Flockr is influencing purchase decisions at the cart stage.</em></div>
+      <div class="card card-accent-purple">
+        <h3>Product differentiation</h3>
+        <p class="body">Signal transforms a reporting tool into a conversational intelligence layer. No competitor offers an operator-facing AI assistant grounded in live behavioural data, account configuration, and verified system knowledge simultaneously.</p>
       </div>
     </div>
-    <div>
-      <h3 class="purple">Catalogue monitoring</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> Are there any products I should be paying attention to right now?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>448 products are currently at scarcity risk &mdash; 19 are high priority, both low in stock and still attracting active demand. You have 5 demand spikes detected in the last 24 hours: three are the same pattern &mdash; purchases jumping from 1 to 3 on sets-category products. This is the early signal pattern that precedes a BUILDING momentum state.</em></div>
-      </div>
-      <h3 class="purple">Evaluating an Action Layer recommendation</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> The Logo Hoody is showing &ldquo;Consider markdown&rdquo; &mdash; is that right?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>The classification comes from three inputs: a 15% decline since peak, 4 days declining, and a Collapsed purchase trend. The product has 32 units remaining &mdash; if you run a markdown and demand recovers, you have limited stock to capitalise on. Promote might clarify whether the decline is structural before committing to a price change.</em></div>
-      </div>
-      <h3 class="purple">Writing a team brief</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> Can you write a brief for our buying team on the restock situation?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>19 products require immediate restock action. All have under 5 days of stock remaining at current sell-through rates and are showing stable or accelerating demand. Flockr is already activating scarcity messaging for qualifying products, which is expected to increase purchase velocity &mdash; meaning runway may shorten faster than the current estimate.</em></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-label purple" style="margin-top:36px;">H3 &nbsp;&middot;&nbsp; Signal and the adaptive scoring model</div>
-  <div class="two-col">
-    <div>
-      <h3 class="purple">Understanding scoring changes</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> Why is scarcity winning so many slots on PDP lately?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>The adaptive model has observed that scarcity signals on PDP are converting at a significantly higher rate than purchase signals. The proofStrength component for scarcity on PDP has been tuned upward. Check the Click rate by signal type table on Analytics Signals, filtered to PDP. If scarcity&rsquo;s visible CTR is materially higher than purchase&rsquo;s, the model is correct.</em></div>
-      </div>
-    </div>
-    <div>
-      <h3 class="purple">Cross-surface coordination</h3>
-      <div class="conv">
-        <div class="conv-q"><strong>You:</strong> Is Flockr coordinating what a shopper sees across pages?</div>
-        <div class="conv-a"><strong>Signal:</strong> <em>The adaptive model coordinates across surfaces within a session. Each selection is made independently per page load, but scoring weights are informed by what the shopper has already seen. If a shopper has seen and ignored a scarcity message twice in the same session, the model reduces scarcity&rsquo;s weight for subsequent page loads. The orchestration layer affects which family wins the slot &mdash; not whether the underlying signal is genuine.</em></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-label purple" style="margin-top:36px;">H4 &nbsp;&middot;&nbsp; What Signal does not do</div>
-  <div class="limits">
-    <div class="lpill"><strong>No config changes</strong> &mdash; explains trade-offs, changes happen in the portal</div>
-    <div class="lpill"><strong>No action execution</strong> &mdash; helps evaluate and communicate, decisions stay with the operator</div>
-    <div class="lpill"><strong>No external system access</strong> &mdash; works only within Flockr&rsquo;s data and configuration</div>
-    <div class="lpill"><strong>No speculation</strong> &mdash; says so clearly when something is outside its context</div>
-  </div>
-  <div class="callout purple"><p>Decisions stay with the operator. Signal makes them faster, better-informed, and easier to act on.</p></div>
-
-  <div class="section-label purple" style="margin-top:36px;">H5 &nbsp;&middot;&nbsp; Screenshots &mdash; to be added</div>
-  <div class="ss-grid">
-    <div class="ss-ph">[Screenshot: Home page &mdash; Signal card with contextual suggested prompts]</div>
-    <div class="ss-ph">[Screenshot: Signal panel &mdash; example conversation with source badges]</div>
-    <div class="ss-ph">[Screenshot: Action Layer &mdash; Signal explaining a classification decision]</div>
-    <div class="ss-ph">[Screenshot: Adaptive model &mdash; Signal answering a scoring model question]</div>
   </div>
 </div>
 
 </div><!-- /content -->
+</div><!-- /body-layout -->
 
 <footer class="doc-footer">
   <span>Flockr &middot; How We Use AI: The Complete Operating Model</span>
   <span>Confidential &middot; For prospective acquirer use only &middot; April 2026</span>
 </footer>
+
+
+<script>
+(function() {
+  function initNav() {
+    // Collect all nav links from both the horizontal nav (mobile) and left sidebar (desktop)
+    var allLinks = document.querySelectorAll('.doc-nav a[data-target], .doc-sidebar a[data-target]');
+    if (!allLinks.length) return;
+
+    // Group links by target section id (some sections have a link in each nav)
+    var sectionMap = {};
+    allLinks.forEach(function(a) {
+      var id = a.getAttribute('data-target');
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (!sectionMap[id]) sectionMap[id] = { id: id, el: el, links: [] };
+      sectionMap[id].links.push(a);
+    });
+
+    // Sort sections by document order so the scrollspy picks the correct "current" one
+    var sections = Object.keys(sectionMap).map(function(k) { return sectionMap[k]; });
+    sections.sort(function(a, b) { return a.el.offsetTop - b.el.offsetTop; });
+    if (!sections.length) return;
+
+    function getOffset() {
+      // Desktop (≥1100px): only the 48px dark header is sticky
+      // Tablet/mobile: header + horizontal nav are both sticky (~110-130px)
+      return window.innerWidth >= 1100 ? 72 : 130;
+    }
+
+    // Horizontally scroll the mobile nav so the active item stays visible.
+    // Only triggered when the active section *changes* — doesn't fight user scrolling.
+    function centerMobileNavOnActive(section) {
+      if (!section) return;
+      if (window.innerWidth >= 1100) return; // desktop uses sidebar, no horizontal nav
+      var navLink = null;
+      for (var i = 0; i < section.links.length; i++) {
+        if (section.links[i].closest('.doc-nav')) { navLink = section.links[i]; break; }
+      }
+      if (!navLink) return;
+      var container = navLink.closest('.doc-nav-inner');
+      if (!container) return;
+      var linkCenter = navLink.offsetLeft + navLink.offsetWidth / 2;
+      var containerCenter = container.clientWidth / 2;
+      var maxScroll = container.scrollWidth - container.clientWidth;
+      var target = Math.max(0, Math.min(maxScroll, linkCenter - containerCenter));
+      container.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    var previousActive = null;
+
+    function setActive() {
+      var scrollY = window.scrollY + getOffset();
+      var current = sections[0];
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].el.offsetTop <= scrollY) current = sections[i];
+      }
+      sections.forEach(function(s) {
+        var isActive = (s === current);
+        s.links.forEach(function(link) {
+          if (isActive) {
+            link.classList.add('active');
+            // Legacy horizontal nav uses 'purple-letter' + 'purple' combo for active purple state
+            if (link.classList.contains('purple-letter')) link.classList.add('purple');
+          } else {
+            link.classList.remove('active', 'purple');
+          }
+        });
+      });
+
+      // Keep the active item centered in the mobile nav's horizontal scroll
+      if (current !== previousActive) {
+        centerMobileNavOnActive(current);
+        previousActive = current;
+      }
+    }
+
+    window.addEventListener('scroll', setActive, { passive: true });
+    window.addEventListener('resize', setActive);
+    setActive();
+
+    // Smooth scroll for anchor clicks — offset accounts for whichever sticky bars are present
+    allLinks.forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var id = a.getAttribute('data-target');
+        var el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        var top = el.getBoundingClientRect().top + window.scrollY - (getOffset() + 16);
+        window.scrollTo({ top: top, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNav);
+  } else {
+    initNav();
+  }
+})();
+</script>
 
 </body>
 </html>
